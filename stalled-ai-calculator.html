@@ -3,144 +3,50 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>The Cost of Stalled AI | ilene.ai</title>
-<meta name="description" content="Estimate the annual spend tied up in AI initiatives that stall before production, and the value a stronger AI operating model could help recover.">
-<link rel="stylesheet" href="styles.css?v=20260903-12">
+<title>AI Cost & ROI Calculator | ilene.ai</title>
+<meta name="description" content="Model AI initiative costs, spend at risk and a directional ROI case using your own operating assumptions.">
+<link rel="stylesheet" href="styles.css?v=20260903-13">
 <style>
-  .calc-head{max-width:none}.calc-head h1{max-width:none}.calc-head p{max-width:920px}
-  .calc-shell{border:1px solid var(--line);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);margin:0 0 28px;background:#fff;box-shadow:0 18px 50px rgba(20,20,20,.06)}
-  .calc-inputs{padding:38px;background:var(--soft);border-right:1px solid var(--line)}
-  .calc-results{padding:38px;background:#fff}
-  .calc-section-label{font-size:12px;text-transform:uppercase;letter-spacing:.16em;font-weight:700;color:var(--beige-deep);margin:0 0 24px}
-  .field{margin:0 0 32px}.field:last-child{margin-bottom:0}.field-top{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:6px}.field-label{font-size:15px;font-weight:700}.field-value{font-size:15px;font-weight:700;white-space:nowrap}.field-hint{font-size:13px;line-height:1.55;color:var(--muted);margin:0 0 12px}
-  input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:4px;border-radius:0;background:#d8d2c8;outline:none;margin:8px 0}
-  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--ink);border:3px solid #fff;box-shadow:0 0 0 1px var(--ink);cursor:pointer;margin-top:-7px}
-  input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:var(--ink);border:3px solid #fff;box-shadow:0 0 0 1px var(--ink);cursor:pointer}
-  input[type=range]::-moz-range-track{height:4px;background:#d8d2c8}
-  .field-scale{display:flex;justify-content:space-between;font-size:11px;color:#8c867f;margin-top:1px}
-  .ledger{border-top:1px solid var(--line)}.ledger-row{display:flex;justify-content:space-between;align-items:baseline;gap:18px;padding:15px 0;border-bottom:1px solid var(--line)}.ledger-label{font-size:15px}.ledger-value{font-size:16px;font-weight:700;white-space:nowrap}.ledger-sub .ledger-label,.ledger-sub .ledger-value{font-size:13px;color:var(--muted)}
-  .risk-value{color:var(--beige-deep)}
-  .recover-box{background:var(--ink);color:#fff;padding:26px;margin-top:26px;transition:opacity .2s ease}.recover-box.pulse{opacity:.82}.recover-label{font-size:12px;text-transform:uppercase;letter-spacing:.12em;font-weight:700;color:var(--beige);margin:0 0 9px}.recover-value{font-size:44px;line-height:1;font-weight:700;letter-spacing:-.04em;margin:0 0 9px}.recover-range{font-size:13px;color:#c9c5bf;margin:0}
-  .stall-note{margin-top:16px;background:var(--soft);border-left:4px solid var(--beige);padding:15px 17px;font-size:14px;line-height:1.55;color:var(--muted)}.stall-note strong{color:var(--ink)}
-  .methodology{border:1px solid var(--line);background:#fff;margin:0 0 28px}.methodology summary{cursor:pointer;padding:19px 22px;font-size:14px;font-weight:700;list-style:none}.methodology summary::-webkit-details-marker{display:none}.methodology summary:before{content:'+';display:inline-block;width:22px;color:var(--beige-deep)}.methodology[open] summary:before{content:'–'}.methodology-body{border-top:1px solid var(--line);padding:22px;color:var(--muted);font-size:14px;line-height:1.7}.methodology-body p{margin:0 0 15px;max-width:950px}.methodology-body p:last-child{margin-bottom:0}.methodology-body strong{color:var(--ink)}.source-links{display:flex;gap:16px;flex-wrap:wrap;margin-top:18px}.source-links a{font-weight:600;border-bottom:1px solid var(--beige)}
-  .calc-cta{background:var(--soft);border-top:4px solid var(--beige);padding:30px 32px;margin:0 0 64px;display:flex;justify-content:space-between;align-items:center;gap:32px}.calc-cta h2{font-size:29px;line-height:1.1;margin:0 0 8px}.calc-cta p{color:var(--muted);margin:0;max-width:720px}.calc-disclaimer{font-size:12px;color:var(--muted);margin:17px 0 0}
-  @media(max-width:850px){.calc-shell{grid-template-columns:1fr}.calc-inputs{border-right:none;border-bottom:1px solid var(--line)}.calc-cta{align-items:flex-start;flex-direction:column}.recover-value{font-size:40px}}
-  @media(max-width:600px){.calc-inputs,.calc-results{padding:26px}.field-top{align-items:flex-start;flex-direction:column;gap:4px}.ledger-row{align-items:flex-start;flex-direction:column;gap:4px}.recover-value{font-size:36px}.calc-cta{padding:26px}}
+.calc-head{max-width:940px}.calc-head p{max-width:850px}
+.calc-shell{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(360px,.95fr);border:1px solid var(--line);background:#fff;margin:0 0 28px}
+.calc-inputs{padding:38px;background:var(--soft);border-right:1px solid var(--line)}.calc-results{padding:38px;background:#fff}
+.calc-label{font-size:12px;text-transform:uppercase;letter-spacing:.16em;font-weight:700;color:#8e7b60;margin:0 0 24px}
+.field{margin:0 0 27px}.field:last-child{margin-bottom:0}.field-top{display:flex;justify-content:space-between;align-items:baseline;gap:14px;margin-bottom:5px}.field-label{font-size:15px;font-weight:700}.field-value{font-size:14px;font-weight:700;white-space:nowrap}.field-hint{font-size:13px;line-height:1.55;color:var(--muted);margin:0 0 10px}
+.text-input,.number-input{width:100%;padding:11px 12px;border:1px solid #d8d2c8;background:#fff;font:inherit;color:var(--ink);border-radius:2px}.number-input{font-weight:600}
+.subhead{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:#8e7b60;font-weight:700;margin:30px 0 8px}
+.resource-head,.resource-row{display:grid;grid-template-columns:minmax(120px,1fr) 72px 72px 88px 24px;gap:7px;align-items:center}.resource-head{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:0 0 6px}.resource-row{margin-bottom:8px}.resource-row input{width:100%;padding:8px;border:1px solid #d8d2c8;background:#fff;font:inherit}.resource-row .res-hours,.resource-row .res-rate{text-align:right}.resource-row .res-cost{text-align:right;font-size:12px;font-weight:700}.res-remove{border:0;background:transparent;color:var(--muted);font-size:18px;cursor:pointer;padding:0}
+.small-btn{display:inline-block;border:1px solid var(--beige);background:#fff;padding:8px 12px;font:inherit;font-size:12px;font-weight:700;cursor:pointer;margin:2px 0 14px}.computed{display:flex;justify-content:space-between;gap:15px;background:#fff;border:1px solid var(--line);padding:10px 12px;font-size:13px;margin:-2px 0 25px}.computed strong{white-space:nowrap}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:4px;background:#d8d2c8;outline:none;margin:7px 0}input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--ink);border:3px solid #fff;box-shadow:0 0 0 1px var(--ink);cursor:pointer;margin-top:-7px}input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:var(--ink);border:3px solid #fff;box-shadow:0 0 0 1px var(--ink);cursor:pointer}.range-scale{display:flex;justify-content:space-between;font-size:11px;color:#8c867f}
+.ledger{border-top:1px solid var(--line)}.ledger-row{display:flex;justify-content:space-between;gap:20px;padding:14px 0;border-bottom:1px solid var(--line);align-items:baseline}.ledger-row.sub .ledger-label,.ledger-row.sub .ledger-value{font-size:13px;color:var(--muted)}.ledger-row.total{border-top:1px solid var(--ink)}.ledger-label{font-size:15px}.ledger-value{font-size:15px;font-weight:700;white-space:nowrap}
+.recover-box{background:var(--ink);color:#fff;padding:28px;margin:26px 0 16px}.recover-label{font-size:11px;text-transform:uppercase;letter-spacing:.13em;color:var(--beige);font-weight:700;margin:0 0 8px}.recover-value{font-size:46px;line-height:1;font-weight:700;letter-spacing:-.04em;margin:0 0 8px}.recover-range{font-size:12px;color:#cbc5bb;margin:0}.calc-note{border-left:4px solid var(--beige);background:var(--soft);padding:15px 17px;color:var(--muted);font-size:13px;line-height:1.55}
+.roi-section{border:1px solid var(--line);padding:36px;margin:0 0 28px}.roi-head{display:grid;grid-template-columns:1fr 1fr;gap:50px;margin-bottom:28px}.roi-head p{color:var(--muted);margin:0}.roi-controls{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:26px}.roi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.roi-card{border:1px solid var(--line);background:var(--soft);padding:18px}.roi-card-label{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:0 0 8px;font-weight:700}.roi-card-value{font-size:23px;font-weight:700;margin:0 0 4px}.roi-card-sub{font-size:12px;color:var(--muted);margin:0}
+.methodology{border:1px solid var(--line);background:#fff;margin:0 0 28px}.methodology summary{cursor:pointer;padding:18px 22px;font-size:14px;font-weight:700;list-style:none}.methodology summary::-webkit-details-marker{display:none}.methodology summary:before{content:'+';display:inline-block;width:22px;color:#8e7b60}.methodology[open] summary:before{content:'–'}.methodology-body{border-top:1px solid var(--line);padding:22px;color:var(--muted);font-size:13px;line-height:1.7}.methodology-body p{max-width:930px;margin:0 0 14px}.methodology-body strong{color:var(--ink)}
+.calc-cta{background:var(--soft);border-top:4px solid var(--beige);padding:30px 32px;margin:0 0 64px;display:flex;justify-content:space-between;align-items:center;gap:32px}.calc-cta h2{font-size:29px;line-height:1.1;margin:0 0 8px}.calc-cta p{color:var(--muted);margin:0;max-width:720px}.disclaimer{font-size:12px;color:var(--muted);margin:12px 0 0}
+@media(max-width:900px){.calc-shell{grid-template-columns:1fr}.calc-inputs{border-right:0;border-bottom:1px solid var(--line)}.roi-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:700px){.calc-inputs,.calc-results,.roi-section{padding:26px}.resource-head,.resource-row{grid-template-columns:minmax(95px,1fr) 56px 56px 72px 18px;gap:5px}.resource-row input{padding:7px 5px;font-size:11px}.resource-row .res-cost{font-size:11px}.roi-head,.roi-controls{grid-template-columns:1fr;gap:18px}.roi-grid{grid-template-columns:1fr}.calc-cta{align-items:flex-start;flex-direction:column;padding:26px}.recover-value{font-size:38px}}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <nav class="nav">
-    <a class="brand" href="index.html" aria-label="ilene.ai home"><img src="ilene-logo.png" alt="ilene.ai"></a>
-    <div class="navlinks"><a href="solutions.html">Solutions</a><a href="resources.html">Resources</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
-  </nav>
-
-  <section class="pagehead calc-head">
-    <div class="eyebrow">INTERACTIVE RESOURCE</div>
-    <h1>What is stalled AI costing you?</h1>
-    <p>Many AI initiatives stall between proof of concept and production. Use your own assumptions to estimate the annual spend at risk and the value a stronger operating model could help redirect toward production.</p>
-  </section>
-
-  <main>
-    <section class="calc-shell" aria-label="Stalled AI cost calculator">
-      <div class="calc-inputs">
-        <p class="calc-section-label">Your assumptions</p>
-
-        <div class="field">
-          <div class="field-top"><label class="field-label" for="n">Active AI initiatives</label><span class="field-value" id="nVal">8</span></div>
-          <p class="field-hint">Pilots, projects and standing AI tools currently underway across IT and the business.</p>
-          <input type="range" id="n" min="1" max="30" step="1" value="8">
-          <div class="field-scale"><span>1</span><span>30</span></div>
-        </div>
-
-        <div class="field">
-          <div class="field-top"><label class="field-label" for="c">Average fully loaded cost / initiative</label><span class="field-value" id="cVal">$180,000</span></div>
-          <p class="field-hint">Allocated people time, tooling and platform spend, plus vendor or consulting fees, per year.</p>
-          <input type="range" id="c" min="25000" max="750000" step="5000" value="180000">
-          <div class="field-scale"><span>$25K</span><span>$750K</span></div>
-        </div>
-
-        <div class="field">
-          <div class="field-top"><label class="field-label" for="s">Share expected to stall before production</label><span class="field-value" id="sVal">50%</span></div>
-          <p class="field-hint">Published results vary by project type and by how “failure” is defined. Start with 50%, then calibrate to your own portfolio.</p>
-          <input type="range" id="s" min="10" max="90" step="1" value="50">
-          <div class="field-scale"><span>10%</span><span>90%</span></div>
-        </div>
-
-        <div class="field">
-          <div class="field-top"><label class="field-label" for="r">Recoverable with a stronger operating model</label><span class="field-value" id="rVal">35%</span></div>
-          <p class="field-hint">An ilene.ai planning assumption for the portion of at risk spend that could potentially be redirected toward viable work that is ready for production. This is not a published benchmark.</p>
-          <input type="range" id="r" min="10" max="60" step="1" value="35">
-          <div class="field-scale"><span>10%</span><span>60%</span></div>
-        </div>
-      </div>
-
-      <div class="calc-results" aria-live="polite">
-        <p class="calc-section-label">Next 12 months, estimated</p>
-        <div class="ledger">
-          <div class="ledger-row"><span class="ledger-label">Total annual AI spend</span><span class="ledger-value" id="totalSpend">$1,440,000</span></div>
-          <div class="ledger-row ledger-sub"><span class="ledger-label">Initiatives likely to stall <span id="stalledCount">(≈4 of 8)</span></span><span class="ledger-value" id="stallPct">50%</span></div>
-          <div class="ledger-row"><span class="ledger-label">Spend at risk</span><span class="ledger-value risk-value" id="atRisk">$720,000</span></div>
-        </div>
-
-        <div class="recover-box" id="recoverBox">
-          <p class="recover-label">Estimated annual value potentially recoverable</p>
-          <p class="recover-value" id="recoverable">$252K</p>
-          <p class="recover-range" id="recoverableRange">Directional range: $176K – $328K</p>
-        </div>
-
-        <div class="stall-note"><strong id="stalledCountNote">≈4 of your 8 initiatives</strong> may fail to reach production on the assumptions above. The point is not precision. It is to make the cost of stalled work visible enough to manage.</div>
-        <p class="calc-disclaimer">Planning estimate only. Results depend on your assumptions and are not a guarantee of savings, recovery or business outcomes.</p>
-      </div>
-    </section>
-
-    <details class="methodology" id="methodology">
-      <summary>How the calculation works and why the stall rate is adjustable</summary>
-      <div class="methodology-body">
-        <p><strong>The math.</strong> Total annual AI spend = active initiatives × average fully loaded annual cost. Spend at risk = total spend × the stall rate assumption. Potentially recoverable value = spend at risk × the recovery assumption. The calculator displays a ±30% directional band because these are planning inputs, not audited forecasts.</p>
-        <p><strong>Why the default is 50%.</strong> There is no single industry wide AI failure rate. Definitions and samples differ. Gartner reported in January 2026 that at least 50% of generative AI projects had been abandoned after proof of concept by the end of 2025. S&amp;P Global Market Intelligence reported organizations scrapping an average of roughly 46% of projects between proof of concept and broad adoption. IDC research reported by CIO in 2026 suggested about half of AI proofs of concept were transitioning to production, a substantial improvement from earlier periods. Treat 50% as a neutral starting point, then replace it with your own portfolio data wherever possible.</p>
-        <p><strong>On recovery.</strong> The recovery percentage is an ilene.ai planning assumption, not a third party statistic. What can actually be recovered depends on use case selection, ownership, data readiness, workflow design, governance, integration and adoption. A structured portfolio review is required to establish a defensible number.</p>
-        <div class="source-links">
-          <a href="https://www.gartner.com/en/articles/genai-project-failure" target="_blank" rel="noopener">Gartner →</a>
-          <a href="https://www.spglobal.com/market-intelligence/en/news-insights/research/ai-experiences-rapid-adoption-but-with-mixed-outcomes-highlights-from-vote-ai-machine-learning" target="_blank" rel="noopener">S&amp;P Global →</a>
-          <a href="https://www.cio.com/article/4151188/ways-cios-can-prove-to-boards-that-ai-projects-will-deliver.html" target="_blank" rel="noopener">CIO / IDC →</a>
-          <a href="https://www.rand.org/pubs/research_reports/RRA2680-1.html" target="_blank" rel="noopener">RAND →</a>
-        </div>
-      </div>
-    </details>
-
-    <section class="calc-cta">
-      <div><div class="eyebrow">FROM ESTIMATE TO DECISION</div><h2>Find out which AI work should scale, change or stop</h2><p>ilene.ai helps leadership teams identify where AI belongs, redesign the workflow around it, establish ownership and governance, and connect implementation to measurable operating value.</p></div>
-      <a class="btn" href="contact.html">Book a Strategy Call</a>
-    </section>
-  </main>
-
-  <footer class="footer"><span>© 2026 ilene.ai</span><span>Strategy • Intelligence • Operating Performance</span></footer>
-</div>
-
+<nav class="nav"><a class="brand" href="index.html" aria-label="ilene.ai home"><img src="ilene-logo.png" alt="ilene.ai"></a><div class="navlinks"><a href="solutions.html">Solutions</a><a href="resources.html">Resources</a><a href="about.html">About</a><a href="contact.html">Contact</a></div></nav>
+<section class="pagehead calc-head"><div class="eyebrow">INTERACTIVE RESOURCE</div><h1>AI Cost & ROI Calculator</h1><p>Model one AI initiative you actually know, scale it to your portfolio, and estimate how much annual spend may be at risk — and what a stronger operating model could potentially recover.</p></section>
+<main>
+<section class="calc-shell" aria-label="AI cost and ROI calculator">
+<div class="calc-inputs"><p class="calc-label">Build the cost model</p><div class="field"><div class="field-top"><label class="field-label" for="projectName">Project</label></div><input class="text-input" id="projectName" value="Customer Service AI Copilot"></div>
+<p class="subhead">Resources</p><p class="field-hint">Add the people allocated to this work. Use a fully loaded hourly cost that reflects your own organization.</p><div class="resource-head"><span>Role</span><span>Hrs/yr</span><span>Rate/hr</span><span>Cost</span><span></span></div><div id="resourceRows"></div><button class="small-btn" id="addResource" type="button">+ Add resource</button><div class="computed"><span>Labor COGS</span><strong id="laborTotal">$97,500</strong></div>
+<div class="field"><div class="field-top"><label class="field-label" for="toolCost">Tooling & platforms COGS</label></div><p class="field-hint">Licenses, compute and platform spend for this initiative, annualized.</p><input class="number-input" id="toolCost" type="number" min="0" step="1000" value="45000"></div>
+<div class="field"><div class="field-top"><label class="field-label" for="vendorCost">Vendor & consulting COGS</label></div><p class="field-hint">External build, integration or advisory spend for this initiative, annualized.</p><input class="number-input" id="vendorCost" type="number" min="0" step="1000" value="40000"></div><div class="computed"><span>Total COGS, this initiative</span><strong id="initiativeTotal">$182,500</strong></div>
+<div class="field"><div class="field-top"><label class="field-label" for="initiativeCount">Similar initiatives in your portfolio</label><span class="field-value" id="initiativeCountVal">1</span></div><p class="field-hint">Start with one known initiative, then scale the same cost profile across similar work if useful.</p><input type="range" id="initiativeCount" min="1" max="30" value="1"><div class="range-scale"><span>1</span><span>30</span></div></div>
+<div class="field"><div class="field-top"><label class="field-label" for="stallRate">Share that stall before production</label><span class="field-value" id="stallRateVal">70%</span></div><p class="field-hint">Set this to your own experience. At a portfolio count of one, read it as the probability that this initiative fails to reach production.</p><input type="range" id="stallRate" min="10" max="95" value="70"><div class="range-scale"><span>10%</span><span>95%</span></div></div>
+<div class="field"><div class="field-top"><label class="field-label" for="underRate">Of those that launch, share that underdeliver</label><span class="field-value" id="underRateVal">35%</span></div><p class="field-hint">Reaches production but falls short of the business case.</p><input type="range" id="underRate" min="10" max="70" value="35"><div class="range-scale"><span>10%</span><span>70%</span></div></div>
+<div class="field"><div class="field-top"><label class="field-label" for="dupRate">Tooling spend duplicated across teams</label><span class="field-value" id="dupRateVal">15%</span></div><p class="field-hint">Overlapping licenses or platforms bought independently by different teams.</p><input type="range" id="dupRate" min="0" max="40" value="15"><div class="range-scale"><span>0%</span><span>40%</span></div></div>
+<div class="field"><div class="field-top"><label class="field-label" for="recoverRate">Recoverable with a stronger operating model</label><span class="field-value" id="recoverRateVal">35%</span></div><p class="field-hint">An ilene.ai planning assumption for the portion of spend at risk that could potentially be redirected toward viable work. Replace it with your own assumption.</p><input type="range" id="recoverRate" min="10" max="60" value="35"><div class="range-scale"><span>10%</span><span>60%</span></div></div></div>
+<div class="calc-results" aria-live="polite"><p class="calc-label">Next 12 months, estimated</p><div class="ledger"><div class="ledger-row sub"><span class="ledger-label">Labor</span><span class="ledger-value" id="peopleTotal">$97,500</span></div><div class="ledger-row sub"><span class="ledger-label">Tools & platforms</span><span class="ledger-value" id="toolsTotal">$45,000</span></div><div class="ledger-row sub"><span class="ledger-label">Vendor & consulting</span><span class="ledger-value" id="vendorTotal">$40,000</span></div><div class="ledger-row total"><span class="ledger-label">Total annual AI spend</span><span class="ledger-value" id="totalSpend">$182,500</span></div><div class="ledger-row sub"><span class="ledger-label">Never reaches production <span id="stalledCount">(70% chance)</span></span><span class="ledger-value" id="stalledAmount">$127,750</span></div><div class="ledger-row sub"><span class="ledger-label">Launches, underdelivers</span><span class="ledger-value" id="underAmount">$19,163</span></div><div class="ledger-row sub"><span class="ledger-label">Duplicate / redundant tooling</span><span class="ledger-value" id="dupAmount">$6,750</span></div><div class="ledger-row total"><span class="ledger-label">Total spend at risk</span><span class="ledger-value" id="atRisk">$153,663</span></div></div><div class="recover-box"><p class="recover-label">Estimated annual value potentially recoverable</p><p class="recover-value" id="recoverable">$54K</p><p class="recover-range" id="recoverableRange">Directional range: $38K – $70K</p></div><div class="calc-note" id="portfolioNote"><strong>70% chance</strong> this initiative never reaches production on the assumptions above. The point is not precision; it is to make stalled spend visible enough to manage.</div><p class="disclaimer">Planning estimate only. Results depend on your assumptions and are not a guarantee of savings, recovery or business outcomes.</p></div></section>
+<section class="roi-section"><div class="roi-head"><div><div class="eyebrow">MODEL THE NEXT STEP</div><h2>What would the investment need to return?</h2></div><p>Use an investment amount and a conservative share of the recoverable value above to create a directional year-one ROI case. No service price is assumed here.</p></div><div class="roi-controls"><div class="field"><div class="field-top"><label class="field-label" for="investment">Investment</label><span class="field-value" id="investmentVal">$5,000</span></div><input class="number-input" type="number" id="investment" min="0" step="500" value="5000"></div><div class="field"><div class="field-top"><label class="field-label" for="unlockRate">Share of recoverable value unlocked in year one</label><span class="field-value" id="unlockRateVal">20%</span></div><p class="field-hint">A planning assumption for the value a first step could unlock — not a claim that one engagement captures the full opportunity.</p><input type="range" id="unlockRate" min="5" max="50" value="20"><div class="range-scale"><span>5%</span><span>50%</span></div></div></div><div class="roi-grid"><div class="roi-card"><p class="roi-card-label">Year-one value unlocked</p><p class="roi-card-value" id="yearOneValue">$11K</p><p class="roi-card-sub">modeled</p></div><div class="roi-card"><p class="roi-card-label">Payback period</p><p class="roi-card-value" id="payback">5.6 mo</p><p class="roi-card-sub">modeled, not guaranteed</p></div><div class="roi-card"><p class="roi-card-label">Net year-one value</p><p class="roi-card-value" id="netValue">$6K</p><p class="roi-card-sub">value unlocked less investment</p></div><div class="roi-card"><p class="roi-card-label">Return multiple</p><p class="roi-card-value" id="returnMultiple">2.2x</p><p class="roi-card-sub">modeled</p></div></div></section>
+<details class="methodology"><summary>How the calculation works</summary><div class="methodology-body"><p><strong>Initiative COGS.</strong> Labor is the sum of each resource's annual hours × hourly cost. Total COGS for one initiative = labor + tooling/platform spend + vendor/consulting spend. Total annual AI spend = initiative COGS × the number of similar initiatives modeled.</p><p><strong>Spend at risk.</strong> The model adds three categories: spend on initiatives that never reach production, spend on launched initiatives that underdeliver, and duplicated tooling spend. At a portfolio count of one, the stall-rate input should be read as this initiative's probability of not reaching production rather than a literal fraction of one project.</p><p><strong>Recoverable value.</strong> Estimated recoverable value = total spend at risk × your recovery assumption. A ±30% directional range is shown because every input is an estimate. The recovery percentage is an ilene.ai planning assumption, not a third-party benchmark.</p><p><strong>ROI.</strong> Year-one value unlocked = estimated recoverable value × the unlock assumption. Payback divides the investment by the modeled monthly value unlocked. Net year-one value subtracts the investment from modeled value unlocked. Return multiple = year-one value unlocked ÷ investment.</p><p><strong>What is not included.</strong> This model does not quantify shadow AI, compliance exposure, opportunity cost, revenue upside, inflation or growth in future initiative count. It is intended to support a planning conversation, not replace a financial model built from your own operating data.</p></div></details>
+<section class="calc-cta"><div><div class="eyebrow">FROM ESTIMATE TO DECISION</div><h2>Find out which AI work should scale, change or stop</h2><p>ilene.ai helps leadership teams identify where AI belongs, redesign the workflow around it, establish ownership and governance, and connect implementation to measurable operating value.</p></div><a class="btn" href="contact.html">Book a Strategy Call</a></section>
+</main><footer class="footer"><span>© 2026 ilene.ai</span><span>Strategy • Intelligence • Operating Performance</span></footer></div>
 <script>
-(function(){
-  const n=document.getElementById('n'),c=document.getElementById('c'),s=document.getElementById('s'),r=document.getElementById('r');
-  const usd=v=>'$'+Math.round(v).toLocaleString('en-US');
-  const compact=v=>{if(v>=1000000)return '$'+(v/1000000).toFixed(v>=10000000?1:2).replace(/\.00$/,'')+'M';if(v>=1000)return '$'+Math.round(v/1000)+'K';return usd(v)};
-  function recalc(){
-    const N=+n.value,C=+c.value,S=(+s.value)/100,R=(+r.value)/100;
-    const total=N*C,atRisk=total*S,recoverable=atRisk*R,low=recoverable*.7,high=recoverable*1.3,stalledN=Math.round(N*S);
-    document.getElementById('nVal').textContent=N;
-    document.getElementById('cVal').textContent=usd(C);
-    document.getElementById('sVal').textContent=Math.round(S*100)+'%';
-    document.getElementById('rVal').textContent=Math.round(R*100)+'%';
-    document.getElementById('totalSpend').textContent=usd(total);
-    document.getElementById('stallPct').textContent=Math.round(S*100)+'%';
-    document.getElementById('stalledCount').textContent='(≈'+stalledN+' of '+N+')';
-    document.getElementById('atRisk').textContent=usd(atRisk);
-    document.getElementById('recoverable').textContent=compact(recoverable);
-    document.getElementById('recoverableRange').textContent='Directional range: '+compact(low)+' – '+compact(high);
-    document.getElementById('stalledCountNote').textContent='≈'+stalledN+' of your '+N+' initiatives';
-    const box=document.getElementById('recoverBox');box.classList.add('pulse');clearTimeout(recalc.t);recalc.t=setTimeout(()=>box.classList.remove('pulse'),180);
-  }
-  [n,c,s,r].forEach(el=>el.addEventListener('input',recalc));recalc();
-})();
+(function(){const $=id=>document.getElementById(id),usd=v=>'$'+Math.round(v).toLocaleString('en-US'),compact=v=>v>=1000000?'$'+(v/1000000).toFixed(v>=10000000?1:2).replace(/\.00$/,'')+'M':v>=1000?'$'+Math.round(v/1000)+'K':usd(v);function addResource(role,hours,rate){const row=document.createElement('div');row.className='resource-row';row.innerHTML='<input class="res-role" value="'+role+'"><input class="res-hours" type="number" min="0" step="10" value="'+hours+'"><input class="res-rate" type="number" min="0" step="5" value="'+rate+'"><span class="res-cost">$0</span><button class="res-remove" type="button" aria-label="Remove resource">×</button>';$('resourceRows').appendChild(row);row.querySelector('.res-hours').addEventListener('input',recalc);row.querySelector('.res-rate').addEventListener('input',recalc);row.querySelector('.res-remove').addEventListener('click',()=>{row.remove();recalc()})}function labor(){let total=0;document.querySelectorAll('.resource-row').forEach(row=>{const h=+row.querySelector('.res-hours').value||0,r=+row.querySelector('.res-rate').value||0,c=h*r;row.querySelector('.res-cost').textContent=usd(c);total+=c});return total}function fmtPayback(m){if(!isFinite(m)||m<=0)return '—';if(m<1)return '~'+Math.max(1,Math.round(m*4.345))+' wks';return(Math.round(m*10)/10)+' mo'}function recalc(){const L=labor(),T=+$('toolCost').value||0,V=+$('vendorCost').value||0,N=+$('initiativeCount').value||1,S=(+$('stallRate').value||0)/100,U=(+$('underRate').value||0)/100,D=(+$('dupRate').value||0)/100,R=(+$('recoverRate').value||0)/100;const one=L+T+V,total=N*one,stalled=total*S,launched=total*(1-S),under=launched*U,dup=N*T*D,atRisk=stalled+under+dup,recover=atRisk*R,low=recover*.7,high=recover*1.3;$('laborTotal').textContent=usd(L);$('initiativeTotal').textContent=usd(one);$('initiativeCountVal').textContent=N;$('stallRateVal').textContent=Math.round(S*100)+'%';$('underRateVal').textContent=Math.round(U*100)+'%';$('dupRateVal').textContent=Math.round(D*100)+'%';$('recoverRateVal').textContent=Math.round(R*100)+'%';$('peopleTotal').textContent=usd(N*L);$('toolsTotal').textContent=usd(N*T);$('vendorTotal').textContent=usd(N*V);$('totalSpend').textContent=usd(total);$('stalledAmount').textContent=usd(stalled);$('underAmount').textContent=usd(under);$('dupAmount').textContent=usd(dup);$('atRisk').textContent=usd(atRisk);$('recoverable').textContent=compact(recover);$('recoverableRange').textContent='Directional range: '+compact(low)+' – '+compact(high);if(N<=3){$('stalledCount').textContent='('+Math.round(S*100)+'% chance)';$('portfolioNote').innerHTML='<strong>'+Math.round(S*100)+'% chance</strong> this initiative never reaches production on the assumptions above. The point is not precision; it is to make stalled spend visible enough to manage.'}else{const n=Math.round(N*S);$('stalledCount').textContent='(≈'+n+' of '+N+')';$('portfolioNote').innerHTML='<strong>≈'+n+' of your '+N+' initiatives</strong> may never reach production on the assumptions above. The point is not precision; it is to make stalled spend visible enough to manage.'}const inv=+$('investment').value||0,unlock=(+$('unlockRate').value||0)/100,y1=recover*unlock,net=y1-inv,multiple=inv>0?y1/inv:0,pay=inv>0&&y1>0?inv/(y1/12):Infinity;$('investmentVal').textContent=usd(inv);$('unlockRateVal').textContent=Math.round(unlock*100)+'%';$('yearOneValue').textContent=compact(y1);$('payback').textContent=fmtPayback(pay);$('netValue').textContent=compact(net);$('returnMultiple').textContent=inv>0?multiple.toFixed(1)+'x':'—'}$('addResource').addEventListener('click',()=>{addResource('New role',100,150);recalc()});['toolCost','vendorCost','initiativeCount','stallRate','underRate','dupRate','recoverRate','investment','unlockRate'].forEach(id=>$(id).addEventListener('input',recalc));addResource('Product / Program Manager',200,150);addResource('Data Scientist / ML Engineer',450,150);recalc()})();
 </script>
 </body>
 </html>
