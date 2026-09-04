@@ -7,7 +7,7 @@
 <meta name="description" content="Estimate the annual spend tied up in AI initiatives that stall before production, and the value a stronger AI operating model could help recover.">
 <link rel="stylesheet" href="styles.css?v=20260903-5">
 <style>
-  .calc-head{max-width:960px;padding-bottom:36px}.calc-head h1{max-width:920px}.calc-head p{max-width:820px}
+  .calc-head{max-width:960px;padding:52px 0 30px}.calc-head h1{max-width:920px}.calc-head p{max-width:820px}
   .calc-shell{border:1px solid var(--line);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);margin:0 0 28px;background:#fff;box-shadow:0 18px 50px rgba(20,20,20,.06)}
   .calc-inputs{padding:42px;background:var(--soft);border-right:1px solid var(--line)}
   .calc-results{padding:42px;background:#fff}
@@ -38,7 +38,7 @@
   <section class="pagehead calc-head">
     <div class="eyebrow">INTERACTIVE RESOURCE</div>
     <h1>What is stalled AI costing you?</h1>
-    <p>Many AI initiatives stall between proof of concept and production. Use your own assumptions to estimate the annual spend at risk — and the value a stronger operating model could help redirect toward production.</p>
+    <p>Many AI initiatives stall between proof of concept and production. Use your own assumptions to estimate the annual spend at risk and the value a stronger operating model could help redirect toward production.</p>
   </section>
 
   <main>
@@ -69,7 +69,7 @@
 
         <div class="field">
           <div class="field-top"><label class="field-label" for="r">Recoverable with a stronger operating model</label><span class="field-value" id="rVal">35%</span></div>
-          <p class="field-hint">An ilene.ai planning assumption for the portion of at-risk spend that could potentially be redirected toward viable, production-ready work. This is not a published benchmark.</p>
+          <p class="field-hint">An ilene.ai planning assumption for the portion of at risk spend that could potentially be redirected toward viable work that is ready for production. This is not a published benchmark.</p>
           <input type="range" id="r" min="10" max="60" step="1" value="35">
           <div class="field-scale"><span>10%</span><span>60%</span></div>
         </div>
@@ -89,7 +89,7 @@
           <p class="recover-range" id="recoverableRange">Directional range: $176K – $328K</p>
         </div>
 
-        <div class="stall-note"><strong id="stalledCountNote">≈4 of your 8 initiatives</strong> may fail to reach production on the assumptions above. The point is not precision — it is to make the cost of stalled work visible enough to manage.</div>
+        <div class="stall-note"><strong id="stalledCountNote">≈4 of your 8 initiatives</strong> may fail to reach production on the assumptions above. The point is not precision. It is to make the cost of stalled work visible enough to manage.</div>
         <p class="calc-disclaimer">Planning estimate only. Results depend on your assumptions and are not a guarantee of savings, recovery or business outcomes.</p>
       </div>
     </section>
@@ -97,9 +97,9 @@
     <details class="methodology" id="methodology">
       <summary>How the calculation works and why the stall rate is adjustable</summary>
       <div class="methodology-body">
-        <p><strong>The math.</strong> Total annual AI spend = active initiatives × average fully loaded annual cost. Spend at risk = total spend × the stall-rate assumption. Potentially recoverable value = spend at risk × the recovery assumption. The calculator displays a ±30% directional band because these are planning inputs, not audited forecasts.</p>
-        <p><strong>Why the default is 50%.</strong> There is no single industry-wide AI failure rate. Definitions and samples differ. Gartner reported in January 2026 that at least 50% of generative-AI projects had been abandoned after proof of concept by the end of 2025. S&amp;P Global Market Intelligence reported organizations scrapping an average of roughly 46% of projects between proof of concept and broad adoption. IDC research reported by CIO in 2026 suggested about half of AI proofs of concept were transitioning to production, a substantial improvement from earlier periods. Treat 50% as a neutral starting point, then replace it with your own portfolio data wherever possible.</p>
-        <p><strong>On recovery.</strong> The recovery percentage is an ilene.ai planning assumption, not a third-party statistic. What can actually be recovered depends on use-case selection, ownership, data readiness, workflow design, governance, integration and adoption. A structured portfolio review is required to establish a defensible number.</p>
+        <p><strong>The math.</strong> Total annual AI spend = active initiatives × average fully loaded annual cost. Spend at risk = total spend × the stall rate assumption. Potentially recoverable value = spend at risk × the recovery assumption. The calculator displays a ±30% directional band because these are planning inputs, not audited forecasts.</p>
+        <p><strong>Why the default is 50%.</strong> There is no single industry wide AI failure rate. Definitions and samples differ. Gartner reported in January 2026 that at least 50% of generative AI projects had been abandoned after proof of concept by the end of 2025. S&amp;P Global Market Intelligence reported organizations scrapping an average of roughly 46% of projects between proof of concept and broad adoption. IDC research reported by CIO in 2026 suggested about half of AI proofs of concept were transitioning to production, a substantial improvement from earlier periods. Treat 50% as a neutral starting point, then replace it with your own portfolio data wherever possible.</p>
+        <p><strong>On recovery.</strong> The recovery percentage is an ilene.ai planning assumption, not a third party statistic. What can actually be recovered depends on use case selection, ownership, data readiness, workflow design, governance, integration and adoption. A structured portfolio review is required to establish a defensible number.</p>
         <div class="source-links">
           <a href="https://www.gartner.com/en/articles/genai-project-failure" target="_blank" rel="noopener">Gartner →</a>
           <a href="https://www.spglobal.com/market-intelligence/en/news-insights/research/ai-experiences-rapid-adoption-but-with-mixed-outcomes-highlights-from-vote-ai-machine-learning" target="_blank" rel="noopener">S&amp;P Global →</a>
@@ -110,7 +110,7 @@
     </details>
 
     <section class="calc-cta">
-      <div><div class="eyebrow">FROM ESTIMATE TO DECISION</div><h2>Find out which AI work should scale, change or stop.</h2><p>ilene.ai helps leadership teams identify where AI belongs, redesign the workflow around it, establish ownership and governance, and connect implementation to measurable operating value.</p></div>
+      <div><div class="eyebrow">FROM ESTIMATE TO DECISION</div><h2>Find out which AI work should scale, change or stop</h2><p>ilene.ai helps leadership teams identify where AI belongs, redesign the workflow around it, establish ownership and governance, and connect implementation to measurable operating value.</p></div>
       <a class="btn" href="contact.html">Book a Strategy Call</a>
     </section>
   </main>
