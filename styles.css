@@ -52,12 +52,10 @@ p {
   aspect-ratio: 996 / 251;
 }
 .logo-crop img {
-  position: absolute;
-  top: -161.75%;
-  left: -22.79%;
   display: block;
-  width: 145.38%;
-  max-width: none;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 .brand-logo {
   width: 140px;
