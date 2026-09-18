@@ -45,20 +45,22 @@ p {
   align-items: center;
   flex: 0 0 auto;
 }
-.brand-wordmark {
-  display: inline-flex;
-  align-items: baseline;
-  font-size: 30px;
-  line-height: 1;
-  font-weight: 800;
-  letter-spacing: -0.065em;
+.logo-crop {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 996 / 251;
 }
-.wordmark-name {
-  color: var(--ink);
+.logo-crop img {
+  position: absolute;
+  top: -161.75%;
+  left: -22.79%;
+  display: block;
+  width: 145.38%;
+  max-width: none;
 }
-.wordmark-ai {
-  color: var(--blue);
-  margin-left: 0.035em;
+.brand-logo {
+  width: 140px;
 }
 .navlinks {
   display: flex;
@@ -638,12 +640,7 @@ p {
 }
 .landing-wordmark {
   position: absolute;
-  display: inline-flex;
-  align-items: baseline;
-  font-size: clamp(56px, 9vw, 94px);
-  line-height: 1;
-  font-weight: 800;
-  letter-spacing: -0.075em;
+  width: clamp(300px, 44vw, 420px);
   opacity: 0;
   transform: translateY(12px);
   animation: wordmarkIn 0.9s 4.05s ease forwards;
@@ -848,8 +845,8 @@ p {
     flex-wrap: wrap;
     justify-content: flex-end;
   }
-  .brand-wordmark {
-    font-size: 27px;
+  .brand-logo {
+    width: 126px;
   }
   .hero {
     padding: 48px 0 44px;
