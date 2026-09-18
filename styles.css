@@ -1,10 +1,10 @@
 :root {
-  --ink: #000000;
-  --beige: #efebdf;
-  --beige-deep: #837d70;
-  --soft: #faf9f5;
-  --line: #e7e2d7;
-  --muted: #5f5a52;
+  --ink: #141414;
+  --beige: #d8c7ab;
+  --beige-deep: #8e7b60;
+  --soft: #f7f4ef;
+  --line: #e8e1d6;
+  --muted: #66615a;
   --blue: #000000;
   --blue-deep: #5f5a52;
 }
