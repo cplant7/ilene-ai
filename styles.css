@@ -58,7 +58,7 @@ p {
   object-fit: contain;
 }
 .brand-logo {
-  width: 58px;
+  width: 72px;
 }
 .navlinks {
   display: flex;
@@ -841,7 +841,7 @@ p {
     justify-content: flex-end;
   }
   .brand-logo {
-    width: 52px;
+    width: 64px;
   }
   .hero {
     padding: 48px 0 44px;
