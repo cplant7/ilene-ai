@@ -540,26 +540,14 @@ p {
   place-items: center;
   min-height: 100vh;
   isolation: isolate;
-  background: radial-gradient(
-    circle at 50% 44%,
-    #fff 0,
-    #fcfbf7 44%,
-    #f3f0e7 100%
-  );
+  background: #ffffff;
 }
 .landing:before {
   content: "";
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: linear-gradient(
-    135deg,
-    rgba(239, 235, 223, 0.44),
-    transparent 34%,
-    rgba(231, 225, 209, 0.34)
-  );
-  opacity: 0;
-  animation: landingGlow 1.2s 4.2s ease forwards;
+  background: transparent;
 }
 .landing-stage {
   appearance: none;
