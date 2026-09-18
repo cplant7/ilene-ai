@@ -1,12 +1,12 @@
 :root {
-  --ink: #141414;
-  --beige: #d8c7ab;
-  --beige-deep: #8e7b60;
-  --soft: #f7f4ef;
-  --line: #e8e1d6;
-  --muted: #66615a;
-  --blue: #0b84f3;
-  --blue-deep: #1457f5;
+  --ink: #000000;
+  --beige: #efebdf;
+  --beige-deep: #837d70;
+  --soft: #faf9f5;
+  --line: #e7e2d7;
+  --muted: #5f5a52;
+  --blue: #000000;
+  --blue-deep: #5f5a52;
 }
 * {
   box-sizing: border-box;
@@ -48,8 +48,8 @@ p {
 .logo-crop {
   position: relative;
   display: block;
-  overflow: hidden;
-  aspect-ratio: 996 / 251;
+  overflow: visible;
+  aspect-ratio: 1;
 }
 .logo-crop img {
   display: block;
@@ -58,7 +58,7 @@ p {
   object-fit: contain;
 }
 .brand-logo {
-  width: 140px;
+  width: 58px;
 }
 .navlinks {
   display: flex;
@@ -506,7 +506,7 @@ p {
 .contact-form input:focus,
 .contact-form textarea:focus {
   border-color: var(--beige-deep);
-  box-shadow: 0 0 0 2px rgba(11, 132, 243, 0.16);
+  box-shadow: 0 0 0 2px rgba(131, 125, 112, 0.2);
 }
 .contact-form textarea {
   min-height: 145px;
@@ -543,8 +543,8 @@ p {
   background: radial-gradient(
     circle at 50% 44%,
     #fff 0,
-    #f7fbff 44%,
-    #eaf4ff 100%
+    #fcfbf7 44%,
+    #f3f0e7 100%
   );
 }
 .landing:before {
@@ -554,9 +554,9 @@ p {
   z-index: -1;
   background: linear-gradient(
     135deg,
-    rgba(6, 164, 245, 0.08),
+    rgba(239, 235, 223, 0.44),
     transparent 34%,
-    rgba(20, 87, 245, 0.07)
+    rgba(231, 225, 209, 0.34)
   );
   opacity: 0;
   animation: landingGlow 1.2s 4.2s ease forwards;
@@ -601,7 +601,7 @@ p {
   height: 46px;
   border: 1px solid rgba(255, 255, 255, 0.72);
   border-radius: 7px;
-  box-shadow: 0 8px 18px rgba(7, 31, 58, 0.18);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.16);
   transform: translate(var(--x), var(--y)) rotate(var(--r)) scale(0.72);
   animation:
     tileToRing 2.9s cubic-bezier(0.68, 0, 0.22, 1) both,
@@ -613,6 +613,7 @@ p {
   width: 100%;
   height: 100%;
   overflow: visible;
+  animation: symbolOut 0.45s 4.05s ease forwards;
 }
 .power-arc,
 .power-line {
@@ -620,7 +621,7 @@ p {
   stroke: url(#powerGradient);
   stroke-width: 16;
   stroke-linecap: round;
-  filter: drop-shadow(0 14px 24px rgba(20, 87, 245, 0.18));
+  filter: drop-shadow(0 14px 24px rgba(131, 125, 112, 0.16));
 }
 .power-arc {
   stroke-dasharray: 410;
@@ -631,7 +632,7 @@ p {
   animation: drawArc 0.95s 3.35s cubic-bezier(0.7, 0, 0.25, 1) forwards;
 }
 .power-line {
-  stroke: var(--blue);
+  stroke: var(--beige);
   stroke-dasharray: 135;
   stroke-dashoffset: 135;
   animation: drawLine 0.72s 3.72s cubic-bezier(0.2, 0.8, 0.25, 1) forwards;
@@ -654,7 +655,7 @@ p {
 }
 .landing-action {
   margin-top: 18px;
-  color: var(--blue-deep);
+  color: var(--ink);
   font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.11em;
@@ -688,7 +689,7 @@ p {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, var(--blue), var(--blue-deep));
+  background: linear-gradient(135deg, var(--beige), #ffffff);
   z-index: -1;
   transform: scale(0);
   border-radius: 50%;
@@ -743,6 +744,11 @@ p {
     opacity: 1;
   }
 }
+@keyframes symbolOut {
+  to {
+    opacity: 0;
+  }
+}
 @keyframes powerExit {
   55% {
     transform: scale(0.92);
@@ -772,6 +778,9 @@ p {
     animation: none;
   }
   .tile-orbit {
+    display: none;
+  }
+  .power-symbol {
     display: none;
   }
   .power-arc,
@@ -844,7 +853,7 @@ p {
     justify-content: flex-end;
   }
   .brand-logo {
-    width: 126px;
+    width: 52px;
   }
   .hero {
     padding: 48px 0 44px;
