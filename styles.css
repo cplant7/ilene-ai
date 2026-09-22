@@ -851,7 +851,7 @@ p {
   opacity: 0;
   transform: translate(-50%, -50%) scale(0.94);
   transform-origin: center;
-  animation: motionLogoReveal 1.25s 8.55s ease forwards;
+  animation: motionLogoReveal 1.25s 10.45s ease forwards;
 }
 .motion-skip {
   position: absolute;
@@ -952,16 +952,16 @@ p {
 }
 @keyframes motionMessage {
   0%,
-  43% {
+  58% {
     opacity: 0;
     transform: translateY(8px);
   }
-  51%,
-  69% {
+  65%,
+  75% {
     opacity: 1;
     transform: translateY(0);
   }
-  78%,
+  85%,
   100% {
     opacity: 0;
     transform: translateY(-8px);
