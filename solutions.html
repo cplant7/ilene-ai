@@ -8,7 +8,7 @@
       name="description"
       content="ilene.ai helps organizations identify where AI fits, redesign the work, implement the right solution, reduce risk and measure business value."
     />
-    <link rel="stylesheet" href="styles.css?v=20260918-8" />
+    <link rel="stylesheet" href="styles.css?v=20260922-1" />
     <style>
       .output-line {
         padding: 14px 18px;
@@ -127,6 +127,77 @@
         color: var(--muted);
         font-size: 14px;
       }
+      .journey-section {
+        padding-top: 58px;
+      }
+      .journey-map {
+        margin-top: 32px;
+        border-top: 1px solid var(--line);
+      }
+      .journey-stage {
+        display: grid;
+        grid-template-columns: 62px minmax(220px, 0.72fr) minmax(0, 1.28fr);
+        gap: 28px;
+        padding: 30px 0 32px;
+        border-bottom: 1px solid var(--line);
+      }
+      .journey-number {
+        color: var(--beige-deep);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        padding-top: 4px;
+      }
+      .journey-question .journey-label {
+        display: block;
+        margin-bottom: 7px;
+        color: var(--beige-deep);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+      }
+      .journey-question h3 {
+        margin: 0 0 10px;
+        font-size: 23px;
+        line-height: 1.2;
+      }
+      .journey-question p,
+      .journey-detail p {
+        margin: 0;
+        color: var(--muted);
+      }
+      .journey-detail {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 28px;
+      }
+      .journey-detail strong {
+        display: block;
+        margin-bottom: 7px;
+        color: var(--ink);
+        font-size: 12px;
+        letter-spacing: 0.08em;
+      }
+      .decision-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+        margin-top: 28px;
+      }
+      .decision-card {
+        min-height: 180px;
+        padding: 23px;
+        border: 1px solid var(--line);
+      }
+      .decision-card h3 {
+        margin: 0 0 8px;
+        font-size: 19px;
+      }
+      .decision-card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 15px;
+      }
       @media (max-width: 1080px) {
         .offer-grid {
           grid-template-columns: repeat(2, 1fr);
@@ -137,6 +208,12 @@
         }
         .offer-card:nth-child(2n) {
           border-right: none;
+        }
+        .journey-stage {
+          grid-template-columns: 50px 1fr;
+        }
+        .journey-detail {
+          grid-column: 2;
         }
       }
       @media (max-width: 820px) {
@@ -149,6 +226,18 @@
           gap: 10px;
         }
         .service-photo-grid {
+          grid-template-columns: 1fr;
+        }
+        .journey-stage {
+          grid-template-columns: 1fr;
+          gap: 12px;
+        }
+        .journey-detail {
+          grid-column: auto;
+          grid-template-columns: 1fr;
+          gap: 18px;
+        }
+        .decision-grid {
           grid-template-columns: 1fr;
         }
         .offer-grid {
@@ -193,8 +282,8 @@
       </section>
       <section class="solution-hero">
         <img
-          src="https://images.unsplash.com/photo-1758691737124-05c5bffe46f0?auto=format&amp;fit=crop&amp;fm=jpg&amp;q=88&amp;w=1800"
-          alt="Professional team collaborating around a laptop"
+          src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&amp;fit=crop&amp;fm=jpg&amp;q=88&amp;w=1800"
+          alt="Technology team working together around digital tools"
         />
       </section>
       <section class="section offer-section">
@@ -270,57 +359,160 @@
           </p>
         </div>
       </section>
-      <section class="section solution-intro">
+      <section class="section soft journey-section">
         <div class="split">
           <div>
-            <div class="eyebrow">OUR APPROACH</div>
-            <h2>Start with the operating result</h2>
+            <div class="eyebrow">FIND YOUR STARTING POINT</div>
+            <h2>Where are you in the AI journey?</h2>
           </div>
           <div>
             <p class="lead">
-              Not every problem needs AI. We begin with the business outcome and
-              use evidence to determine where AI can improve the work, what must
-              change around it and what is worth implementing.
+              You do not need a finished AI strategy before speaking with us.
+              Start with the question, the workflow, the stalled initiative or
+              the result you need to improve.
             </p>
             <p class="solution-note">
-              The objective is a solution your organization can operate after we
-              leave, with clear ownership, practical controls and a visible line
-              to business value.
+              ilene.ai can help at one point in the journey or across the full
+              path from opportunity to implementation, measurement and handoff.
             </p>
           </div>
         </div>
-        <div class="solution-path">
-          <div class="path-step">
-            <span>01</span>
-            <h3>Identify</h3>
-            <p>
-              Find the workflow, decision or customer outcome worth improving.
-            </p>
-          </div>
-          <div class="path-step">
-            <span>02</span>
-            <h3>Prioritize</h3>
-            <p>Compare value, feasibility, risk and expected return.</p>
-          </div>
-          <div class="path-step">
-            <span>03</span>
-            <h3>Act</h3>
-            <p>
-              Design the workflow, ownership, controls and success measures.
-            </p>
-          </div>
-          <div class="path-step">
-            <span>04</span>
-            <h3>Implement</h3>
-            <p>
-              Introduce the right solution with adoption built into the work.
-            </p>
-          </div>
-          <div class="path-step">
-            <span>05</span>
-            <h3>Measure and Scale</h3>
-            <p>Prove the result, improve the model and expand what works.</p>
-          </div>
+        <div class="journey-map">
+          <article class="journey-stage">
+            <div class="journey-number">01</div>
+            <div class="journey-question">
+              <span class="journey-label">EXPLORING</span>
+              <h3>Where could AI create value?</h3>
+              <p>
+                You have ideas or pressure to act, but no clear view of which
+                problems are worth solving first.
+              </p>
+            </div>
+            <div class="journey-detail">
+              <div>
+                <strong>HOW WE HELP</strong>
+                <p>
+                  Review the work, decisions, data and customer outcomes to find
+                  practical opportunities for AI.
+                </p>
+              </div>
+              <div>
+                <strong>WHAT YOU LEAVE WITH</strong>
+                <p>
+                  A focused opportunity list, current state findings and a clear
+                  recommendation on where to begin.
+                </p>
+              </div>
+            </div>
+          </article>
+          <article class="journey-stage">
+            <div class="journey-number">02</div>
+            <div class="journey-question">
+              <span class="journey-label">PRIORITIZING</span>
+              <h3>Which opportunity deserves investment?</h3>
+              <p>
+                Several ideas compete for budget and attention, but value,
+                feasibility and risk have not been compared.
+              </p>
+            </div>
+            <div class="journey-detail">
+              <div>
+                <strong>HOW WE HELP</strong>
+                <p>
+                  Assess business value, effort, data needs, risk and expected
+                  return across the strongest use cases.
+                </p>
+              </div>
+              <div>
+                <strong>WHAT YOU LEAVE WITH</strong>
+                <p>
+                  A ranked use case portfolio, business case, success measures
+                  and a practical sequence for action.
+                </p>
+              </div>
+            </div>
+          </article>
+          <article class="journey-stage">
+            <div class="journey-number">03</div>
+            <div class="journey-question">
+              <span class="journey-label">PREPARING</span>
+              <h3>What must change before implementation?</h3>
+              <p>
+                The opportunity is clear, but the workflow, ownership, data,
+                controls or requirements are not ready.
+              </p>
+            </div>
+            <div class="journey-detail">
+              <div>
+                <strong>HOW WE HELP</strong>
+                <p>
+                  Redesign the workflow and define roles, decision rights, human
+                  review, controls, requirements and measures.
+                </p>
+              </div>
+              <div>
+                <strong>WHAT YOU LEAVE WITH</strong>
+                <p>
+                  A target workflow, operating model, risk view, requirements
+                  and implementation plan.
+                </p>
+              </div>
+            </div>
+          </article>
+          <article class="journey-stage">
+            <div class="journey-number">04</div>
+            <div class="journey-question">
+              <span class="journey-label">IMPLEMENTING</span>
+              <h3>How do we turn the plan into working practice?</h3>
+              <p>
+                A solution has been chosen or built, but successful adoption
+                depends on how it fits the work and the team.
+              </p>
+            </div>
+            <div class="journey-detail">
+              <div>
+                <strong>HOW WE HELP</strong>
+                <p>
+                  Support selection, implementation planning, rollout, training,
+                  operating documentation and ownership transfer.
+                </p>
+              </div>
+              <div>
+                <strong>WHAT YOU LEAVE WITH</strong>
+                <p>
+                  A working solution, adoption measures, operating playbook,
+                  launch criteria and handoff plan.
+                </p>
+              </div>
+            </div>
+          </article>
+          <article class="journey-stage">
+            <div class="journey-number">05</div>
+            <div class="journey-question">
+              <span class="journey-label">IMPROVING</span>
+              <h3>Is the investment creating value?</h3>
+              <p>
+                AI is in use, but leadership cannot clearly see adoption,
+                performance, return or what should happen next.
+              </p>
+            </div>
+            <div class="journey-detail">
+              <div>
+                <strong>HOW WE HELP</strong>
+                <p>
+                  Establish the baseline, track performance, review exceptions
+                  and prioritize improvements before expanding.
+                </p>
+              </div>
+              <div>
+                <strong>WHAT YOU LEAVE WITH</strong>
+                <p>
+                  An ROI scorecard, review cadence, improvement priorities and
+                  evidence for the next investment decision.
+                </p>
+              </div>
+            </div>
+          </article>
         </div>
         <div class="service-photo-grid">
           <figure>
@@ -339,6 +531,59 @@
             />
             <figcaption>Know what changed and what it is worth.</figcaption>
           </figure>
+        </div>
+      </section>
+      <section class="section">
+        <div class="eyebrow">WHAT WE TEST</div>
+        <h2>A useful AI decision must work from every angle</h2>
+        <p class="lead">
+          Technology fit is only one part of the decision. We examine the
+          conditions that determine whether the solution can create and sustain
+          business value.
+        </p>
+        <div class="decision-grid">
+          <article class="decision-card">
+            <h3>Business result</h3>
+            <p>
+              The outcome, baseline and measure that will show whether the work
+              improved.
+            </p>
+          </article>
+          <article class="decision-card">
+            <h3>Workflow fit</h3>
+            <p>
+              Where AI belongs in the work, where people remain involved and how
+              exceptions are handled.
+            </p>
+          </article>
+          <article class="decision-card">
+            <h3>Data and technology</h3>
+            <p>
+              The data, integration, security and solution requirements needed
+              to operate reliably.
+            </p>
+          </article>
+          <article class="decision-card">
+            <h3>People and adoption</h3>
+            <p>
+              What teams need to understand, use and trust for the change to
+              become working practice.
+            </p>
+          </article>
+          <article class="decision-card">
+            <h3>Ownership and risk</h3>
+            <p>
+              Clear decision rights, controls, escalation paths, monitoring and
+              accountable client ownership.
+            </p>
+          </article>
+          <article class="decision-card">
+            <h3>Value and handoff</h3>
+            <p>
+              A visible return, an operating rhythm and the ability for your team
+              to own the solution after we leave.
+            </p>
+          </article>
         </div>
       </section>
       <section class="section">

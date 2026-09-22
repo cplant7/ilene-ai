@@ -752,6 +752,258 @@ p {
     border-radius: 0;
   }
 }
+
+/* Integrated landing motion */
+.home-page.motion-playing {
+  overflow: hidden;
+}
+.site-page {
+  min-height: 100vh;
+  opacity: 0;
+  transform: translateY(16px);
+}
+.header-logo {
+  opacity: 0;
+}
+.motion-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: #fff;
+  opacity: 1;
+  visibility: visible;
+}
+.motion-stage {
+  appearance: none;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.motion-stage:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: -12px;
+}
+.motion-canvas {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+.motion-cards {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0;
+  height: 0;
+}
+.motion-card {
+  position: absolute;
+  left: -26px;
+  top: -36px;
+  width: 52px;
+  height: 72px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 9px;
+  background-color: #ded7c6;
+  background-repeat: no-repeat;
+  background-size: 185px auto;
+  box-shadow: 0 11px 25px rgba(20, 20, 20, 0.2);
+  opacity: 0;
+  transform-origin: center;
+  animation: cardJourney 9.4s var(--delay)
+    cubic-bezier(0.66, 0.02, 0.22, 1) both;
+}
+.motion-card:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(145deg, #f3efe4, #d8c7ab);
+  opacity: 0;
+  animation: cardBrandTone 2.2s calc(7s + var(--delay)) ease forwards;
+}
+.motion-message {
+  position: absolute;
+  z-index: 3;
+  width: min(64vw, 430px);
+  text-align: center;
+  color: var(--ink);
+  font-size: clamp(17px, 2vw, 24px);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  opacity: 0;
+  animation: motionMessage 9.1s ease both;
+}
+.motion-logo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 5;
+  width: min(68vw, 430px);
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.94);
+  transform-origin: center;
+  animation: motionLogoReveal 1.25s 8.55s ease forwards;
+}
+.motion-skip {
+  position: absolute;
+  right: 28px;
+  bottom: 24px;
+  z-index: 8;
+  appearance: none;
+  padding: 5px 0;
+  border: 0;
+  border-bottom: 1px solid transparent;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+.motion-skip:hover,
+.motion-skip:focus-visible {
+  color: var(--ink);
+  border-color: var(--beige-deep);
+}
+.motion-revealing .site-page {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.85s 0.3s ease,
+    transform 0.85s 0.3s ease;
+}
+.motion-revealing .motion-card,
+.motion-revealing .motion-message,
+.motion-revealing .motion-skip {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.motion-revealing .motion-logo {
+  animation: none;
+  opacity: 1;
+  transform: translate(
+      calc(-50% + var(--logo-x)),
+      calc(-50% + var(--logo-y))
+    )
+    scale(var(--logo-scale));
+  transition: transform 1.45s cubic-bezier(0.7, 0, 0.2, 1);
+}
+.motion-complete .site-page {
+  opacity: 1;
+  transform: none;
+}
+.motion-complete .header-logo {
+  opacity: 1;
+  transition: opacity 0.16s ease;
+}
+.motion-complete .motion-intro {
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.16s ease,
+    visibility 0s 0.16s;
+}
+@keyframes cardJourney {
+  0% {
+    opacity: 0;
+    transform: translate(var(--x), var(--y)) rotate(var(--r)) scale(0.74);
+  }
+  8% {
+    opacity: 1;
+  }
+  27% {
+    opacity: 1;
+    transform: translate(var(--line-x), 0) rotate(0) scale(0.94);
+  }
+  52% {
+    opacity: 1;
+    transform: rotate(var(--a)) translateY(-248px) rotate(var(--na)) scale(1);
+  }
+  70% {
+    opacity: 1;
+    transform: rotate(var(--a2)) translateY(-248px) rotate(var(--na2)) scale(1);
+  }
+  88% {
+    opacity: 1;
+    transform: translate(var(--fx), var(--fy)) rotate(0) scale(0.76);
+  }
+  100% {
+    opacity: 0.12;
+    filter: blur(2px);
+    transform: translate(var(--fx), var(--fy)) rotate(0) scale(0.66);
+  }
+}
+@keyframes cardBrandTone {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.96;
+  }
+}
+@keyframes motionMessage {
+  0%,
+  43% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  51%,
+  69% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  78%,
+  100% {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+@keyframes motionLogoReveal {
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+@media (max-width: 700px) {
+  .motion-cards {
+    transform: scale(0.68);
+  }
+  .motion-card {
+    width: 48px;
+    height: 68px;
+    left: -24px;
+    top: -34px;
+  }
+  .motion-message {
+    width: 70vw;
+  }
+  .motion-logo {
+    width: min(76vw, 330px);
+  }
+  .motion-skip {
+    right: 20px;
+    bottom: 18px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .motion-intro {
+    display: none;
+  }
+  .site-page,
+  .header-logo {
+    opacity: 1;
+    transform: none;
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

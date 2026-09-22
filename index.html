@@ -3,130 +3,286 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>ilene.ai | AI transformation that works</title>
+    <title>ilene.ai | AI that improves how your business operates</title>
     <meta
       name="description"
-      content="ilene.ai helps organizations find where AI belongs, redesign the workflow, implement the right solution and measure the operating value."
+      content="ilene.ai helps organizations identify where AI belongs, redesign the work, implement the right solution and measure business value."
     />
-    <link rel="stylesheet" href="styles.css?v=20260918-8" />
+    <link rel="stylesheet" href="styles.css?v=20260922-1" />
   </head>
-  <body class="landing-body">
-    <main class="landing" id="landing">
+  <body class="home-page motion-playing">
+    <section
+      class="motion-intro"
+      id="motionIntro"
+      aria-label="ilene.ai introduction"
+    >
       <button
-        class="landing-stage"
-        id="enterSite"
+        class="motion-stage"
+        id="motionStage"
         type="button"
-        aria-label="Enter ilene.ai services"
+        aria-label="Skip the introduction and enter ilene.ai"
       >
-        <span class="power-mark" aria-hidden="true">
-          <span class="tile-orbit" id="tileOrbit"></span>
-          <svg class="power-symbol" viewBox="0 0 320 320" role="img">
-            <defs>
-              <linearGradient id="powerGradient" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#f4f0e5" />
-                <stop offset="1" stop-color="#e7e1d1" />
-              </linearGradient>
-            </defs>
-            <path
-              class="power-arc power-arc-left"
-              d="M104 67A118 118 0 0 0 160 278"
-            />
-            <path
-              class="power-arc power-arc-right"
-              d="M160 278A118 118 0 0 0 216 67"
-            />
-            <path class="power-line" d="M160 28V158" />
-          </svg>
-          <span
-            class="logo-crop landing-wordmark"
-            role="img"
-            aria-label="ilene.ai"
-          >
+        <span class="motion-canvas" aria-hidden="true">
+          <span class="motion-cards" id="motionCards"></span>
+          <span class="motion-message">AI belongs where it improves the work</span>
+          <span class="motion-logo logo-crop" id="motionLogo">
             <img src="assets/ilene-logo-final.png" alt="" />
           </span>
         </span>
-        <span class="landing-statement"
-          >AI belongs where it improves the work</span
-        >
-        <span class="landing-action">Enter Services</span>
       </button>
-      <a class="landing-skip" href="solutions.html">Skip motion</a>
-    </main>
+      <button class="motion-skip" id="motionSkip" type="button">
+        Skip motion
+      </button>
+    </section>
+
+    <div class="site-page" id="sitePage" aria-hidden="true">
+      <div class="wrap">
+        <nav class="nav">
+          <a class="brand" href="index.html" aria-label="ilene.ai home">
+            <span class="logo-crop brand-logo header-logo" id="headerLogo">
+              <img src="assets/ilene-logo-final.png" alt="ilene.ai" />
+            </span>
+          </a>
+          <div class="navlinks">
+            <a href="solutions.html">Services</a
+            ><a href="resources.html">Resources</a><a href="about.html">About</a
+            ><a href="contact.html">Contact</a>
+          </div>
+        </nav>
+      </div>
+
+      <main>
+        <section class="hero home-hero">
+          <div class="wrap">
+            <div class="eyebrow">AI • OPERATIONS • GROWTH</div>
+            <h1>AI that actually improves how your business operates</h1>
+            <p>
+              We help organizations identify where AI belongs, redesign the work
+              around it and connect implementation to measurable business
+              performance.
+            </p>
+            <a class="btn" href="contact.html">Book a Strategy Call</a>
+          </div>
+        </section>
+
+        <section class="section soft">
+          <div class="wrap">
+            <h2>Technology is not the outcome</h2>
+            <p class="lead">
+              Most transformation efforts stall in the gap between strategy and
+              execution. ilene.ai focuses on the operating decisions, workflows,
+              ownership and measures that determine whether AI creates value.
+            </p>
+            <div class="grid3">
+              <div class="card">
+                <h3>AI without operating context</h3>
+                <p>
+                  Tools get introduced before the business is clear on the
+                  problem, process or decision they need to improve.
+                </p>
+              </div>
+              <div class="card">
+                <h3>Data without clarity</h3>
+                <p>
+                  Leaders have more information, but not necessarily a clearer
+                  view of where performance is breaking down or what to do next.
+                </p>
+              </div>
+              <div class="card">
+                <h3>Growth without alignment</h3>
+                <p>
+                  Customer, delivery and revenue teams often work from different
+                  signals, creating friction instead of momentum.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section home-solutions">
+          <div class="wrap split">
+            <div>
+              <div class="eyebrow">HOW WE CAN HELP</div>
+              <h2>From opportunity to measurable results</h2>
+              <p class="lead">
+                Start with the business problem. We help determine where AI can
+                create value and what it will take to put it into practice.
+              </p>
+              <a class="text-link" href="solutions.html">Explore Services →</a>
+            </div>
+            <div>
+              <div class="service">
+                <h3>Find where AI fits</h3>
+                <p>
+                  Identify the strongest opportunities and focus investment
+                  where it can create business value.
+                </p>
+              </div>
+              <div class="service">
+                <h3>Redesign the work</h3>
+                <p>
+                  Improve the workflow, operating model, ownership and measures
+                  around the solution.
+                </p>
+              </div>
+              <div class="service">
+                <h3>Choose and implement</h3>
+                <p>
+                  Select the right solution and move it into working practice
+                  with adoption and handoff built in.
+                </p>
+              </div>
+              <div class="service">
+                <h3>Reduce AI risk</h3>
+                <p>
+                  Assess risk and recommend practical controls, governance,
+                  ownership and monitoring requirements.
+                </p>
+              </div>
+              <div class="service">
+                <h3>Measure value and improve</h3>
+                <p>
+                  Define the return, track the result and improve what is not
+                  delivering the expected value.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section soft">
+          <div class="wrap">
+            <p class="quote">
+              “Better technology matters. Better decisions and execution matter
+              more.”
+            </p>
+          </div>
+        </section>
+      </main>
+
+      <div class="wrap">
+        <footer class="footer">
+          <span>© 2026 ilene.ai</span
+          ><span>Strategy • Intelligence • Operating Performance</span>
+        </footer>
+      </div>
+    </div>
+
     <script>
       (function () {
-        var stage = document.getElementById("enterSite");
-        var landing = document.getElementById("landing");
+        var intro = document.getElementById("motionIntro");
+        var stage = document.getElementById("motionStage");
+        var skip = document.getElementById("motionSkip");
+        var cards = document.getElementById("motionCards");
+        var motionLogo = document.getElementById("motionLogo");
+        var headerLogo = document.getElementById("headerLogo");
+        var sitePage = document.getElementById("sitePage");
         var reducedMotion = window.matchMedia(
           "(prefers-reduced-motion: reduce)",
         ).matches;
-        var orbit = document.getElementById("tileOrbit");
-        var leaving = false;
-        var timer;
-        var colours = [
-          ["#000000", "#3a3935"],
-          ["#efebdf", "#ffffff"],
-          ["#8f8a7d", "#d8d3c6"],
-          ["#1d1d1b", "#77736a"],
-          ["#e7e1d1", "#f7f4ec"],
-          ["#5f5b52", "#b8b2a5"],
-          ["#f4f0e5", "#d9d2c1"],
-          ["#2d2c29", "#aaa497"],
+        var finishing = false;
+        var revealTimer;
+        var photoUrls = [
+          "https://images.unsplash.com/photo-1758691737124-05c5bffe46f0?auto=format&fit=crop&fm=jpg&q=82&w=480",
+          "https://images.unsplash.com/photo-1758518731706-be5d5230e5a5?auto=format&fit=crop&fm=jpg&q=82&w=480",
+          "https://images.unsplash.com/photo-1758691737138-7b9b1884b1db?auto=format&fit=crop&fm=jpg&q=82&w=480",
         ];
         var starts = [
-          [-270, -120],
-          [-190, 130],
-          [-110, -170],
-          [-40, 150],
-          [20, -135],
-          [85, 165],
-          [145, -155],
-          [230, 105],
-          [285, -70],
-          [-245, 40],
-          [-155, -35],
-          [-70, 75],
-          [0, -205],
-          [65, 65],
-          [125, -55],
-          [185, 25],
-          [250, 150],
-          [-280, 165],
-          [-25, 205],
-          [285, 55],
+          [-440, -220], [-340, 180], [-280, -120], [-220, 250], [-170, -250],
+          [-110, 150], [-55, -190], [10, 235], [65, -235], [120, 170],
+          [180, -180], [235, 245], [285, -115], [345, 175], [430, -215],
+          [-410, 70], [-315, -20], [-250, 85], [-185, -70], [-125, 265],
+          [-65, 60], [0, -285], [55, 105], [115, -75], [175, 285],
+          [240, 45], [305, -260], [365, 75], [-365, 270], [405, 255],
         ];
 
-        for (var i = 0; i < 20; i += 1) {
-          var card = document.createElement("span");
-          var angle = i * 18;
-          var palette = colours[i % colours.length];
-          card.className = "orbit-card";
-          card.style.setProperty("--a", angle + "deg");
-          card.style.setProperty("--na", -angle + "deg");
-          card.style.setProperty("--x", starts[i][0] + "px");
-          card.style.setProperty("--y", starts[i][1] + "px");
-          card.style.setProperty("--line-x", (i - 9.5) * 28 + "px");
-          card.style.setProperty("--r", (i % 5) * 7 - 14 + "deg");
-          card.style.animationDelay = i * 34 + "ms";
-          card.style.background =
-            "linear-gradient(145deg," + palette[0] + "," + palette[1] + ")";
-          orbit.appendChild(card);
+        function buildCards() {
+          for (var i = 0; i < 30; i += 1) {
+            var card = document.createElement("span");
+            var orbitAngle = i * 12;
+            var finalX;
+            var finalY;
+
+            if (i < 24) {
+              var arcAngle = (-42 + (264 / 23) * i) * (Math.PI / 180);
+              finalX = Math.cos(arcAngle) * 222;
+              finalY = Math.sin(arcAngle) * 222;
+            } else {
+              finalX = 0;
+              finalY = -238 + (i - 24) * 34;
+            }
+
+            card.className = "motion-card";
+            card.style.setProperty("--delay", i * 45 + "ms");
+            card.style.setProperty("--x", starts[i][0] + "px");
+            card.style.setProperty("--y", starts[i][1] + "px");
+            card.style.setProperty("--r", ((i % 7) - 3) * 8 + "deg");
+            card.style.setProperty("--line-x", (i - 14.5) * 36 + "px");
+            card.style.setProperty("--a", orbitAngle + "deg");
+            card.style.setProperty("--na", -orbitAngle + "deg");
+            card.style.setProperty("--a2", orbitAngle + 156 + "deg");
+            card.style.setProperty("--na2", -(orbitAngle + 156) + "deg");
+            card.style.setProperty("--fx", finalX.toFixed(1) + "px");
+            card.style.setProperty("--fy", finalY.toFixed(1) + "px");
+            card.style.backgroundImage =
+              "linear-gradient(rgba(20,20,20,.06),rgba(20,20,20,.06)),url('" +
+              photoUrls[i % photoUrls.length] +
+              "')";
+            card.style.backgroundPosition =
+              (20 + ((i * 29) % 70)) + "% " + (20 + ((i * 17) % 70)) + "%";
+            cards.appendChild(card);
+          }
         }
 
-        function enterServices() {
-          if (leaving) return;
-          leaving = true;
-          window.clearTimeout(timer);
-          landing.classList.add("landing-exit");
-          window.setTimeout(
-            function () {
-              window.location.href = "solutions.html";
-            },
-            reducedMotion ? 0 : 900,
-          );
+        function revealPage(immediate) {
+          if (finishing) return;
+          finishing = true;
+          window.clearTimeout(revealTimer);
+
+          if (immediate) {
+            document.body.classList.remove("motion-playing");
+            document.body.classList.add("motion-complete");
+            sitePage.removeAttribute("aria-hidden");
+            intro.setAttribute("aria-hidden", "true");
+            return;
+          }
+
+          var source = motionLogo.getBoundingClientRect();
+          var target = headerLogo.getBoundingClientRect();
+          var moveX =
+            target.left + target.width / 2 - (source.left + source.width / 2);
+          var moveY =
+            target.top + target.height / 2 - (source.top + source.height / 2);
+          var scale = target.width / source.width;
+
+          motionLogo.style.setProperty("--logo-x", moveX + "px");
+          motionLogo.style.setProperty("--logo-y", moveY + "px");
+          motionLogo.style.setProperty("--logo-scale", scale);
+          document.body.classList.add("motion-revealing");
+          sitePage.removeAttribute("aria-hidden");
+
+          window.setTimeout(function () {
+            document.body.classList.remove("motion-playing");
+            document.body.classList.add("motion-complete");
+            intro.setAttribute("aria-hidden", "true");
+          }, 1650);
         }
 
-        stage.addEventListener("click", enterServices);
-        if (!reducedMotion) timer = window.setTimeout(enterServices, 7400);
+        buildCards();
+        stage.addEventListener("click", function () {
+          revealPage(false);
+        });
+        skip.addEventListener("click", function () {
+          revealPage(false);
+        });
+
+        if (reducedMotion) {
+          revealPage(true);
+        } else {
+          revealTimer = window.setTimeout(function () {
+            revealPage(false);
+          }, 10800);
+        }
       })();
     </script>
   </body>
