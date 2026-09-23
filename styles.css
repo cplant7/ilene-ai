@@ -851,7 +851,7 @@ p {
   opacity: 0;
   transform: translate(-50%, -50%) scale(0.94);
   transform-origin: center;
-  animation: motionLogoReveal 1.25s 10.45s ease forwards;
+  animation: motionLogoReveal 1.25s 11s ease forwards;
 }
 .motion-skip {
   position: absolute;
@@ -937,9 +937,9 @@ p {
     transform: translate(var(--fx), var(--fy)) rotate(0) scale(0.76);
   }
   100% {
-    opacity: 0.12;
-    filter: blur(2px);
-    transform: translate(var(--fx), var(--fy)) rotate(0) scale(0.66);
+    opacity: 1;
+    filter: none;
+    transform: translate(var(--fx), var(--fy)) rotate(0) scale(0.76);
   }
 }
 @keyframes cardBrandTone {
