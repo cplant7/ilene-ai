@@ -811,12 +811,13 @@ p {
   width: 52px;
   height: 72px;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(247, 243, 234, 0.92);
   border-radius: 9px;
   background-color: #ded7c6;
   background-repeat: no-repeat;
   background-size: 185px auto;
-  box-shadow: 0 11px 25px rgba(20, 20, 20, 0.2);
+  box-shadow: 0 11px 25px rgba(46, 40, 29, 0.2);
+  filter: sepia(0.12) saturate(0.82) contrast(0.97) brightness(1.03);
   opacity: 0;
   transform-origin: center;
   animation: cardJourney 9.4s var(--delay)
@@ -944,7 +945,7 @@ p {
 }
 @keyframes cardBrandTone {
   0% {
-    opacity: 0;
+    opacity: 0.18;
   }
   100% {
     opacity: 0.96;
