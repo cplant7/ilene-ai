@@ -306,7 +306,8 @@ h1, h2, h3, h4 { margin: 0; font-weight: 700; line-height: 1.1; letter-spacing: 
 
 /* ---------- resources: three cards per row ---------- */
 .res-cards.res-cards-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-@media (max-width: 1020px) { .res-cards.res-cards-3 { grid-template-columns: minmax(0, 1fr); } }
+.res-cards.res-cards-3 .res-card-wide { grid-column: span 2; }
+@media (max-width: 1020px) { .res-cards.res-cards-3 { grid-template-columns: minmax(0, 1fr); } .res-cards.res-cards-3 .res-card-wide { grid-column: auto; } }
 
 /* ---------- about: power symbol on cream ---------- */
 .power-band .hero-mark .ring { stroke: var(--c-char); opacity: .16; }

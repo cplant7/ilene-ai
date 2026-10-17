@@ -1539,3 +1539,6 @@
 .calc-legacy .eyebrow{display:none}
 .calc-legacy .pagehead h1{font-weight:700;letter-spacing:-.02em;line-height:1.1;font-size:clamp(1.95rem,3.7vw,3.1rem)}
 @media(max-width:860px){.calc-legacy .calc-shell{grid-template-columns:minmax(0,1fr)!important}.calc-legacy .calc-inputs,.calc-legacy .calc-results{padding:22px;border-right:0}.calc-legacy .wrap{padding-inline:16px}.calc-legacy .resource-head,.calc-legacy .resource-row{grid-template-columns:minmax(0,1fr) 56px 56px 72px 20px}}
+
+/* page label above the calculator title, matching the site kicker */
+.calc-legacy .calc-kicker{font-size:var(--t-sm);font-weight:600;letter-spacing:normal;text-transform:none;color:var(--c-bronze);margin:0 0 18px;line-height:1.4}
