@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>AI Use Case Prioritization Tool | ilene.ai</title>
+<meta name="description" content="Rate candidate AI use cases on value, feasibility, data readiness and risk, then see which to start now, which to prepare for and which to park.">
+<meta name="theme-color" content="#0e0e0d">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ilene.ai">
+<meta property="og:title" content="AI Use Case Prioritization Tool | ilene.ai">
+<meta property="og:description" content="Rate candidate AI use cases on value, feasibility, data readiness and risk, then see which to start now, which to prepare for and which to park.">
+<meta property="og:image" content="https://ilene.ai/assets/ilene-logo.png">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&amp;display=swap">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="prioritizer.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="shell head-row">
+    <a class="brand" href="index.html" aria-label="ilene.ai home"><img src="assets/ilene-logo-reverse-dim-sm.png" alt="ilene.ai" width="74" height="78"><span class="brand-shine" aria-hidden="true"></span></a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav class="nav" id="site-nav" aria-label="Main"><a href="start-here.html">Explore</a><a href="solutions.html">Solutions</a><a href="data.html">Data</a><a href="scorecard.html">Scorecard</a><a href="resources.html" aria-current="page">Resources</a><a href="about.html">About</a><a class="btn btn-light" href="contact.html"><span class="glyph" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4.4 4.4a5.4 5.4 0 1 0 7.2 0" fill="none" stroke-width="1.8" stroke-linecap="round"/><line x1="8" y1="1.8" x2="8" y2="7.6" stroke-width="1.8" stroke-linecap="round"/></svg></span>Connect</a></nav>
+  </div>
+</header>
+<main id="main">
+
+<section class="page-hero dark">
+  <div class="shell">
+    <img class="pz-print-only pz-print-logo" src="assets/ilene-logo-sm.png" alt="ilene.ai" width="56" height="59">
+    <p class="kicker">Interactive tool</p>
+    <h1>Decide which AI work comes first.</h1>
+    <p class="lead" style="max-width:58ch">Most organizations have more AI ideas than capacity to deliver them. Rate each candidate on value, feasibility, data readiness and risk to see which to start now, which need preparation and which to park.</p>
+    <ol class="pz-steps" aria-label="How it works">
+      <li><span>1</span>List your candidate use cases</li>
+      <li><span>2</span>Rate each one from 1 to 5</li>
+      <li><span>3</span>Take the shortlist into your next leadership meeting</li>
+    </ol>
+  </div>
+</section>
+
+<section class="band pz-band">
+  <div class="shell">
+    <div class="pz-layout">
+      <div class="pz-col-left">
+        <div class="pz-col-head">
+          <div>
+            <h2>Your use cases</h2>
+            <p>Five examples are loaded to show how it works. Rename them, re-rate them or clear them and start with your own.</p>
+          </div>
+          <div class="pz-tools">
+            <button class="pz-textbtn" type="button" id="pzClear">Clear all</button>
+            <button class="pz-textbtn" type="button" id="pzReset">Load examples</button>
+          </div>
+        </div>
+        <div class="pz-list" id="pzList"></div>
+        <button class="pz-add" type="button" id="pzAdd"><i aria-hidden="true"></i><span>Add a use case</span></button>
+      </div>
+
+      <aside class="pz-panel" aria-labelledby="pzMatrixTitle">
+        <div>
+          <h2 id="pzMatrixTitle">Priority matrix</h2>
+          <p class="pz-sub">Value against ease of delivery. Each point moves as you rate. Select a point to open that use case.</p>
+        </div>
+        <div class="pz-matrix-wrap">
+          <div class="pz-axis-y" aria-hidden="true"><span>Lower</span><b>Value</b><span>Higher</span></div>
+          <div class="pz-matrix" id="pzMatrix" role="img" aria-label="Priority matrix of rated use cases">
+            <div class="pz-q q-plan" data-quad="plan"><b>Plan and prepare</b><em>0</em></div>
+            <div class="pz-q q-start" data-quad="start"><b>Start now</b><em>0</em></div>
+            <div class="pz-q q-park" data-quad="park"><em>0</em><b>Park</b></div>
+            <div class="pz-q q-later" data-quad="later"><em>0</em><b>Fit in if capacity allows</b></div>
+            <div class="pz-dots" id="pzDots"></div>
+          </div>
+          <div class="pz-axis-x" aria-hidden="true"><span>Harder</span><b>Ease of delivery</b><span>Easier</span></div>
+        </div>
+        <p class="pz-summary" id="pzSummary" aria-live="polite"></p>
+      </aside>
+    </div>
+
+    <div class="pz-results" aria-labelledby="pzRankTitle">
+      <div class="pz-results-head">
+        <div>
+          <h2 id="pzRankTitle">Your ranked shortlist</h2>
+          <p>Ordered by quadrant, then by priority score. Each item carries a suggested next step and any gaps to close before committing budget.</p>
+        </div>
+        <div class="actions pz-print-hide">
+          <button class="btn" type="button" id="pzPrint"><span class="glyph" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4.4 4.4a5.4 5.4 0 1 0 7.2 0" fill="none" stroke-width="1.8" stroke-linecap="round"/><line x1="8" y1="1.8" x2="8" y2="7.6" stroke-width="1.8" stroke-linecap="round"/></svg></span>Print or save as PDF</button>
+          <button class="btn btn-ghost-light" type="button" id="pzCopy">Copy summary</button>
+        </div>
+      </div>
+      <ol class="pz-rank" id="pzRank"></ol>
+      <p class="pz-empty" id="pzEmpty" hidden>Add a use case above to build your shortlist.</p>
+      <p class="pz-note pz-print-only">Prepared with the ilene.ai AI Use Case Prioritization Tool (ilene.ai/use-case-prioritizer.html). Results reflect the ratings entered and are directional only.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band cream pz-guide-band" aria-labelledby="pzGuideTitle">
+  <div class="shell pz-guide">
+    <div>
+      <p class="kicker">How the ratings work</p>
+      <h2 class="h2" id="pzGuideTitle">Five questions for every use case.</h2>
+      <p class="body" style="margin-top:18px">Rate each use case against the same criteria so the comparison is fair. Where people disagree on a rating, that disagreement is useful: it usually points to an assumption that needs checking.</p>
+      <div class="pz-formula">
+        <div><b>Value</b><span>Average of business impact and strategic fit.</span></div>
+        <div><b>Ease of delivery</b><span>Average of feasibility, data readiness and inverted risk (a risk rating of 5 counts as 1).</span></div>
+        <div><b>Priority score</b><span>Value multiplied by ease of delivery, out of 25. Both must be 3 or above to place a use case in Start now.</span></div>
+      </div>
+    </div>
+    <div class="pz-crit-list">
+      <div><h3>Business impact</h3><p>The effect on cost, revenue, service quality or capacity. <b>1</b> is minor or hard to see. <b>5</b> is significant and measurable.</p></div>
+      <div><h3>Strategic fit</h3><p>How directly it supports stated organizational priorities. <b>1</b> is a nice-to-have. <b>5</b> is central to the plan.</p></div>
+      <div><h3>Feasibility</h3><p>Whether it can be built and adopted with the skills, tools, budget and integration path available. <b>1</b> is a major stretch. <b>5</b> is straightforward.</p></div>
+      <div><h3>Data readiness</h3><p>Whether the data it needs exists, is accessible and is of usable quality. <b>1</b> is not available. <b>5</b> is ready to use.</p></div>
+      <div><h3>Risk</h3><p>Exposure if it gets things wrong: privacy, regulatory, safety, fairness or reputational. <b>1</b> is low. <b>5</b> is high and needs strong oversight.</p></div>
+    </div>
+  </div>
+  <div class="shell">
+    <p class="pz-note">This tool compares the ratings you enter. It is directional, does not assess your organization&rsquo;s overall AI maturity and is not a substitute for a detailed assessment. Ratings are stored only in this browser.</p>
+  </div>
+</section>
+
+<section class="band dark cta" aria-labelledby="pzCtaTitle">
+  <svg class="cta-mark" viewBox="0 0 656 700" aria-hidden="true"><path class="ring" d="M433.1 125.2 A258 258 0 1 1 216.9 125.2" fill="none" stroke-width="68" stroke-linecap="round"/><line class="bar" x1="325" y1="78" x2="325" y2="226" stroke-width="68" stroke-linecap="round"/></svg>
+  <div class="shell" style="position:relative">
+    <p class="kicker">From shortlist to plan</p>
+    <h2 id="pzCtaTitle">Turn your shortlist into a sequenced roadmap.</h2>
+    <p class="lead">Through AI Transformation, ilene.ai tests these ratings with the people who own the work, closes the data and governance gaps behind each priority, and sequences the work into a plan with owners and measures.</p>
+    <div class="actions">
+      <a class="btn btn-light" href="contact.html"><span class="glyph" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4.4 4.4a5.4 5.4 0 1 0 7.2 0" fill="none" stroke-width="1.8" stroke-linecap="round"/><line x1="8" y1="1.8" x2="8" y2="7.6" stroke-width="1.8" stroke-linecap="round"/></svg></span>Book a strategy call</a>
+      <a class="btn btn-ghost" href="solutions.html#transformation">See AI Transformation</a>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="site-foot">
+  <div class="shell">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <img src="assets/ilene-logo-reverse-sm.png" alt="ilene.ai" width="92" height="97" loading="lazy">
+      </div>
+      <div>
+        <h4>Solutions</h4>
+        <ul>
+          <li><a href="solutions.html#assessments">AI Audits &amp; Assessments</a></li>
+          <li><a href="solutions.html#transformation">AI Transformation</a></li>
+          <li><a href="solutions.html#governance">AI Governance</a></li>
+          <li><a href="solutions.html#implementation">AI Implementation</a></li>
+          <li><a href="solutions.html#performance">AI Performance &amp; Intelligence</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>ilene.ai</h4>
+        <ul>
+          <li><a href="start-here.html">Explore</a></li><li><a href="solutions.html">Solutions</a></li><li><a href="data.html">Data</a></li><li><a href="scorecard.html">Scorecard</a></li><li><a href="resources.html">Resources</a></li><li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Connect</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get in touch</h4>
+        <ul>
+          <li><a href="mailto:hello@ilene.ai">hello@ilene.ai</a></li>
+          <li><a href="https://www.linkedin.com/company/ilene/" target="_blank" rel="noopener">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-base"><span>&copy; 2026 ilene.ai</span><span>AI to ROI</span></div>
+  </div>
+</footer>
+<script src="site.js"></script>
+<script src="prioritizer.js"></script>
+</body>
+</html>

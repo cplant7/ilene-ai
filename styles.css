@@ -807,3 +807,17 @@ h1, h2, h3, h4 { margin: 0; font-weight: 700; line-height: 1.1; letter-spacing: 
   .marquee-track { animation: none; }
   .hero-mark .ring, .hero-mark .bar { stroke-dashoffset: 0; }
 }
+
+/* ---------- prioritization tool teaser (Resources page) ---------- */
+.pz-teaser { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 2px; aspect-ratio: 16 / 10; border-radius: 16px; overflow: hidden; background: var(--c-char-3); border: 1px solid var(--c-char-3); }
+.pz-teaser .q { position: relative; background: var(--c-char-2); padding: 12px; }
+.pz-teaser .q.go { background: rgba(0, 168, 107, .14); }
+.pz-teaser .q b { font-size: var(--t-xs); font-weight: 600; color: var(--c-mist); }
+.pz-teaser .q.go b { color: var(--c-kelly-bright); }
+.pz-teaser i { position: absolute; width: 16px; height: 16px; border-radius: 50%; background: var(--c-cream); box-shadow: 0 0 0 3px var(--c-char-2); }
+.pz-teaser .q.go i { background: var(--c-kelly-bright); box-shadow: 0 0 0 3px rgba(14, 14, 13, .6); animation: pzFloat 4s var(--ease-in-out) infinite alternate; }
+.pz-teaser .q.go i + i { animation-delay: -2s; }
+.pz-teaser i.pz-warm { background: #d7b37a; }
+.pz-teaser i.pz-dim { background: #8a877f; }
+@keyframes pzFloat { from { transform: translate(0, 0); } to { transform: translate(10px, -8px); } }
+@media (prefers-reduced-motion: reduce) { .pz-teaser i { animation: none !important; } }

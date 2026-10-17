@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Measuring AI Value | ilene.ai</title>
+<link rel="stylesheet" href="brand.css">
+<style>
+  .chain { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 4px; }
+  .link { position: relative; padding: 10px 13px; background: #fff; border: 1px solid var(--line); border-right: 0; }
+  .link:first-child { border-radius: 12px 0 0 12px; }
+  .link:last-child { border-radius: 0 12px 12px 0; border-right: 1px solid var(--line); background: var(--char); color: #fff; border-color: var(--char); }
+  .link:not(:last-child)::after { content: ""; position: absolute; right: -7px; top: 50%; width: 12px; height: 12px; background: #fff; border-top: 1px solid var(--line); border-right: 1px solid var(--line); transform: translateY(-50%) rotate(45deg); z-index: 2; }
+  .link:nth-child(3)::after { background: #fff; }
+  .link .lv { font-size: 6.6pt; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--kelly); }
+  .link:last-child .lv { color: var(--kelly-bright); }
+  .link h3 { font-size: 10.4pt; font-weight: 700; margin-top: 2px; }
+  .link .q { font-size: 8pt; color: var(--muted); margin-top: 2px; font-style: italic; }
+  .link:last-child .q { color: var(--mist); }
+  .link .eg { font-size: 7.5pt; margin-top: 5px; line-height: 1.42; color: #2b2a27; }
+  .link:last-child .eg { color: var(--cream); }
+  .chain-note { margin-top: 8px; font-size: 8pt; color: var(--muted); }
+  .chain-note b { color: var(--char); }
+  .steps { display: grid; gap: 0; border-top: 1px solid var(--line); }
+  .steps > div { display: grid; grid-template-columns: 24px 1.5in 1fr; gap: 8px; padding: 5px 0; border-bottom: 1px solid var(--line); align-items: start; }
+  .steps h3 { font-size: 9.2pt; font-weight: 700; }
+  .steps p { font-size: 8pt; color: var(--muted); line-height: 1.38; }
+  .kpi td:nth-child(n+2) { font-size: 7.7pt; }
+  .kpi td:first-child { width: 1.25in; }
+  .guards { grid-template-columns: repeat(4, 1fr); }
+  .guards .card { padding: 10px 11px; }
+  .guards h3 { font-size: 9pt; }
+  .guards p { font-size: 7.6pt; }
+  .cad { grid-template-columns: repeat(3, 1fr); }
+  .cad .card { padding: 0; overflow: hidden; display: flex; flex-direction: column; }
+  .cad .top { background: var(--char); color: #fff; padding: 8px 12px; display: flex; justify-content: space-between; align-items: baseline; }
+  .cad .top b { font-size: 17pt; font-weight: 700; line-height: 1; }
+  .cad .top b small { font-size: 8pt; font-weight: 500; color: var(--mist); margin-left: 3px; }
+  .cad .top span { font-size: 6.6pt; letter-spacing: .16em; text-transform: uppercase; color: var(--kelly-bright); font-weight: 700; }
+  .cad .dots { gap: 3px; }
+  .cad .body { padding: 8px 12px 8px; display: grid; gap: 7px; flex: 1; align-content: start; }
+  .cad .decide { margin-top: auto; border-top: 1px solid var(--line); padding: 6px 12px 8px; font-size: 7.8pt; line-height: 1.4; }
+  .cad .decide b { display: block; font-size: 6.6pt; letter-spacing: .14em; text-transform: uppercase; color: var(--bronze); margin-bottom: 2px; }
+  .calc { display: grid; grid-template-columns: 1.08fr .92fr; gap: 10px; }
+  .formula { border: 1px solid var(--line); border-radius: 12px; padding: 10px 13px; display: grid; gap: 6px; align-content: start; }
+  .formula .f { font-size: 8.3pt; line-height: 1.45; }
+  .formula .f b { display: block; font-size: 9pt; }
+  .formula .f code { font-family: inherit; background: #faf8f2; border: 1px solid var(--line); border-radius: 6px; padding: 4px 8px; display: block; margin-top: 3px; font-size: 8pt; }
+  .eg-box { background: var(--cream); border-radius: 12px; padding: 10px 13px; }
+  .eg-box h3 { font-size: 9.2pt; font-weight: 700; }
+  .eg-box .il { font-size: 6.6pt; letter-spacing: .14em; text-transform: uppercase; color: var(--bronze); font-weight: 700; }
+  .eg-box table { width: 100%; border-collapse: collapse; margin-top: 6px; font-size: 8pt; }
+  .eg-box td { padding: 2.5px 0; border-bottom: 1px solid rgba(14,14,13,.12); }
+  .eg-box td:last-child { text-align: right; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .eg-box tr.total td { border-bottom: 0; font-weight: 700; font-size: 9pt; padding-top: 6px; }
+  .defgrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+  .defgrid div { border: 1px solid var(--line); border-radius: 10px; height: 0.4in; padding: 4px 9px; font-size: 7.2pt; font-weight: 600; color: var(--char); background: #fff; }
+  .defgrid div.w2 { grid-column: span 2; }
+</style>
+</head>
+<body>
+
+<!-- ============ PAGE 1 ============ -->
+<section class="page">
+  <div class="band">
+    <svg class="ring" viewBox="0 0 656 700" aria-hidden="true"><path d="M433.1 125.2 A258 258 0 1 1 216.9 125.2"/><line x1="325" y1="78" x2="325" y2="226"/></svg>
+    <div class="band-top"><img src="ilene-logo-reverse.png" alt="ilene.ai"><span class="meta">Practical AI resource &middot; October 2026</span></div>
+    <p class="kicker">AI value measurement</p>
+    <h1>Measuring AI Value</h1>
+    <p class="sub">A practical guide to baselines, KPIs and review cadence, so the return on each AI initiative can be seen, tested and managed.</p>
+  </div>
+
+  <div class="pad">
+    <div class="sec">
+      <p class="lede">Most AI initiatives are approved on expected benefits and then reviewed on activity: licences bought, pilots launched, people trained. The value only becomes visible when measures are set before launch, tied to a business outcome and owned by a named person.</p>
+    </div>
+
+    <div class="sec">
+      <div class="sec-h"><span class="tag">01</span><h2>Why AI value goes unmeasured</h2></div>
+      <div class="cards c3">
+        <div class="card"><h3><span class="n">1</span>No baseline</h3><p>Performance before launch was never recorded, so any improvement afterwards is an estimate that is easy to dispute.</p></div>
+        <div class="card"><h3><span class="n">2</span>Activity, not outcomes</h3><p>Logins, prompts and pilots show use, not value. They are useful signals, but they are not results.</p></div>
+        <div class="card"><h3><span class="n">3</span>No owner</h3><p>Nobody is accountable for the number, so it is not reviewed and nothing changes when it slips.</p></div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="sec-h"><span class="tag">02</span><h2>The measurement chain</h2></div>
+      <p class="lede" style="margin-bottom:8px">Measure four layers. Each depends on the one before it.</p>
+      <div class="chain">
+        <div class="link"><span class="lv">Layer 1</span><h3>Adoption</h3><p class="q">Is it being used as intended?</p><p class="eg">Active users as a share of the target group. Share of eligible work that goes through the tool.</p></div>
+        <div class="link"><span class="lv">Layer 2</span><h3>Performance</h3><p class="q">Is the work better?</p><p class="eg">Cycle time, error and rework rate, first-contact resolution, throughput per person.</p></div>
+        <div class="link"><span class="lv">Layer 3</span><h3>Outcome</h3><p class="q">Did the business result move?</p><p class="eg">Cost per transaction, backlog, customer satisfaction, revenue per account.</p></div>
+        <div class="link"><span class="lv">Layer 4</span><h3>Value</h3><p class="q">What is it worth, net of cost?</p><p class="eg">Annual net benefit, payback period, return on investment.</p></div>
+      </div>
+      <p class="chain-note"><b>Read the chain from left to right.</b> Strong adoption with no change in performance is a signal to revisit the workflow, not to buy more licences.</p>
+    </div>
+
+    <div class="sec">
+      <div class="sec-h"><span class="tag">03</span><h2>Set the baseline before launch</h2></div>
+      <div class="steps">
+        <div><span class="n">1</span><h3>Name the outcome</h3><p>State the business result the initiative exists to move, and name the person accountable for it.</p></div>
+        <div><span class="n">2</span><h3>Choose few KPIs</h3><p>Pick one or two measures for each layer of the chain. A short list gets reviewed; a long one gets ignored.</p></div>
+        <div><span class="n">3</span><h3>Record today</h3><p>Measure current performance over a representative period, such as the last full quarter, using the same definitions you will use after launch.</p></div>
+        <div><span class="n">4</span><h3>Set the decision rule</h3><p>Agree in advance what result means continue, adjust or stop, and by when.</p></div>
+        <div><span class="n">5</span><h3>Fix the data source</h3><p>Confirm where each number comes from, who reports it and how often, before the first review is due.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot"><span>&copy; 2026 <b>ilene.ai</b> &middot; AI to ROI</span><span>Measuring AI Value &middot; 1 of 3</span></div>
+</section>
+
+<!-- ============ PAGE 2 ============ -->
+<section class="page">
+  <div class="runhead"><div><span class="k">Measuring AI Value</span><h2>Choosing the right measures</h2></div><img src="ilene-logo-dark.png" alt="ilene.ai"></div>
+  <div class="pad">
+    <div class="sec">
+      <div class="sec-h"><span class="tag">04</span><h2>Example KPIs by function</h2></div>
+      <p class="lede" style="margin-bottom:8px">Starting points to adapt, not targets. Choose measures that fit your workflow and that you can track the same way before and after launch.</p>
+      <table class="t kpi">
+        <thead><tr><th>Function</th><th>Adoption signal</th><th>Performance KPI</th><th>Business outcome</th></tr></thead>
+        <tbody>
+          <tr><td>Customer service</td><td>Share of inquiries handled with AI assistance</td><td>Average handling time; first-contact resolution</td><td>Cost per contact; customer satisfaction</td></tr>
+          <tr><td>Finance</td><td>Share of invoices processed without manual keying</td><td>Processing time per invoice; exception rate</td><td>Cost per invoice; days to close the month</td></tr>
+          <tr><td>Operations and supply chain</td><td>Share of planners using forecasts in decisions</td><td>Forecast accuracy; late schedule changes</td><td>Inventory carrying cost; on-time delivery</td></tr>
+          <tr><td>Human resources</td><td>Share of policy questions answered through self-service</td><td>Time to answer; time to fill roles</td><td>HR cost per employee; new-hire retention at 90 days</td></tr>
+          <tr><td>Sales and marketing</td><td>Share of proposals drafted with AI support</td><td>Proposal turnaround time; content production time</td><td>Win rate; cost per qualified lead</td></tr>
+          <tr><td>IT service desk</td><td>Share of tickets triaged automatically</td><td>Mean time to resolve; reopen rate</td><td>Cost per ticket; user satisfaction</td></tr>
+          <tr><td>Public sector and programs</td><td>Share of applications pre-screened with AI support</td><td>Processing time per application; error rate</td><td>Backlog size; service standard met</td></tr>
+          <tr><td>Legal and compliance</td><td>Share of standard contracts reviewed with AI support</td><td>Review time per contract; issues found at final review</td><td>External legal spend; contract cycle time</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="sec" style="margin-top:0.18in">
+      <div class="sec-h"><span class="tag">05</span><h2>Guardrail metrics: measure what could get worse</h2></div>
+      <p class="lede" style="margin-bottom:8px">Headline KPIs can improve while quality, experience or fairness slips. Track a guardrail for each risk and set a threshold that triggers a review, even when the headline numbers look strong.</p>
+      <div class="cards guards">
+        <div class="card"><h3>Quality</h3><p>Error rate in a sample checked by a person; rework; corrections after release.</p></div>
+        <div class="card"><h3>Experience</h3><p>Complaints, escalations to a person, and customer and employee satisfaction.</p></div>
+        <div class="card"><h3>Fairness and compliance</h3><p>Outcome differences across groups where relevant; policy exceptions; audit findings.</p></div>
+        <div class="card"><h3>Cost to run</h3><p>Usage-based fees, support effort and vendor costs as volume grows.</p></div>
+      </div>
+    </div>
+
+    <div class="sec" style="margin-top:0.18in">
+      <div class="sec-h"><span class="tag">06</span><h2>Common measurement traps</h2></div>
+      <div class="cards c2">
+        <div class="card"><h3><span class="n">!</span>Counting time saved as money saved</h3><p>Hours saved are a benefit only when they are redeployed to valued work or remove a cost. Record where the time went.</p></div>
+        <div class="card"><h3><span class="n">!</span>Comparing against a different period</h3><p>Seasonality, staffing and volume changes can look like AI impact. Compare like for like, or use a comparison group.</p></div>
+        <div class="card"><h3><span class="n">!</span>Leaving out the full cost</h3><p>Include licences, usage fees, integration, support, training and the time of the people involved, not only the vendor invoice.</p></div>
+        <div class="card"><h3><span class="n">!</span>Changing the definition midway</h3><p>If a KPI definition changes, restate the baseline. Otherwise the trend reflects the change in definition, not the work.</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>&copy; 2026 <b>ilene.ai</b> &middot; Examples only. Adapt measures to your own context.</span><span>Measuring AI Value &middot; 2 of 3</span></div>
+</section>
+
+<!-- ============ PAGE 3 ============ -->
+<section class="page">
+  <div class="runhead"><div><span class="k">Measuring AI Value</span><h2>Reviewing and deciding</h2></div><img src="ilene-logo-dark.png" alt="ilene.ai"></div>
+  <div class="pad">
+    <div class="sec">
+      <div class="sec-h"><span class="tag">07</span><h2>Review cadence: 30, 60 and 90 days</h2></div>
+      <div class="cards cad">
+        <div class="card"><div class="top"><b>30<small>days</small></b><span>Adoption</span></div>
+          <div class="body"><ul class="dots"><li>Is the target group using it as intended?</li><li>What is getting in the way of use?</li><li>Are guardrail metrics within threshold?</li></ul></div>
+          <div class="decide"><b>Decide</b>Remove adoption barriers before judging results.</div></div>
+        <div class="card"><div class="top"><b>60<small>days</small></b><span>Performance</span></div>
+          <div class="body"><ul class="dots"><li>Are performance KPIs moving against the baseline?</li><li>Is quality holding in checked samples?</li><li>Where does the workflow still break?</li></ul></div>
+          <div class="decide"><b>Decide</b>Adjust the workflow, training or configuration.</div></div>
+        <div class="card"><div class="top"><b>90<small>days</small></b><span>Value</span></div>
+          <div class="body"><ul class="dots"><li>Has the business outcome moved?</li><li>What is the net value against the full cost?</li><li>What would it take to scale?</li></ul></div>
+          <div class="decide"><b>Decide</b>Scale, adjust or stop, using the rule agreed before launch.</div></div>
+      </div>
+      <p class="small" style="margin-top:5px">After 90 days, review quarterly alongside your other operating metrics.</p>
+    </div>
+
+    <div class="sec">
+      <div class="sec-h"><span class="tag">08</span><h2>Calculating net value</h2></div>
+      <div class="calc">
+        <div class="formula">
+          <div class="f"><b>Annual benefit</b><code>(baseline cost per unit &minus; new cost per unit) &times; annual volume + other measured benefits</code></div>
+          <div class="f"><b>Annual net value</b><code>annual benefit &minus; annual run cost &minus; build cost spread over its expected life</code></div>
+          <p class="small">Count only benefits you can measure, or that the budget owner agrees are real. Revenue effects need the same baseline discipline as cost effects.</p>
+        </div>
+        <div class="eg-box">
+          <span class="il">Illustrative figures only</span>
+          <h3>Example: invoice processing</h3>
+          <table>
+            <tr><td>Baseline cost per invoice</td><td>$12.00</td></tr>
+            <tr><td>Cost per invoice after launch</td><td>$7.50</td></tr>
+            <tr><td>Annual volume</td><td>40,000</td></tr>
+            <tr><td>Annual benefit</td><td>$180,000</td></tr>
+            <tr><td>Annual run cost</td><td>&minus;$45,000</td></tr>
+            <tr><td>Build cost of $60,000 over 3 years</td><td>&minus;$20,000</td></tr>
+            <tr class="total"><td>Annual net value</td><td>$115,000</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="sec-h"><span class="tag">09</span><h2>KPI definition card</h2></div>
+      <p class="lede" style="margin-bottom:7px">Complete one card for each KPI before launch. Print this page, or copy the fields into your own tracker.</p>
+      <div class="defgrid">
+        <div class="w2">KPI name and layer</div><div>Owner</div><div>Review frequency</div>
+        <div class="w2">Definition and formula</div><div class="w2">Data source and who reports it</div>
+        <div>Baseline value</div><div>Baseline period</div><div>Target and date</div><div>Guardrail threshold</div>
+        <div class="w2">Decision rule: continue, adjust or stop</div><div class="w2">Notes</div>
+      </div>
+    </div>
+
+    <div class="sec" style="margin-top:0.16in">
+      <div class="cta">
+        <div><h3>Want the measures built into the work?</h3><p>Through AI Performance &amp; Intelligence, ilene.ai sets baselines, builds the reporting and runs the 30, 60 and 90 day reviews with your team.</p></div>
+        <a href="https://ilene.ai/contact.html">Book a strategy call</a>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>&copy; 2026 <b>ilene.ai</b> &middot; hello@ilene.ai</span><span>Measuring AI Value &middot; 3 of 3</span></div>
+</section>
+
+</body>
+</html>
