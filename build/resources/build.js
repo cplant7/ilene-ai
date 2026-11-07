@@ -11,7 +11,8 @@ const HERE = __dirname;
 const OUT = path.join(HERE, "..", "..", "resources");
 const DOCS = [
   ["measuring-ai-value.html", "measuring-ai-value.pdf"],
-  ["ai-policy-writing-guide.html", "ai-policy-writing-guide.pdf"]
+  ["ai-policy-writing-guide.html", "ai-policy-writing-guide.pdf"],
+  ["threat-readiness-playbook.html", "threat-readiness-playbook.pdf"]
 ];
 
 (async () => {
