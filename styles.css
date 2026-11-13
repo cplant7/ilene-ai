@@ -695,6 +695,8 @@ h1, h2, h3, h4 { margin: 0; font-weight: 700; line-height: 1.1; letter-spacing: 
 .calc-bar.risk i { background: #d7b37a; }
 
 /* ---------- about ---------- */
+.media-row { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: clamp(28px, 5vw, 64px); align-items: center; }
+@media (max-width: 860px) { .media-row { grid-template-columns: minmax(0, 1fr); } .media-row .hero-photo { order: 2; } }
 .beliefs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 40px; }
 .belief { border-radius: var(--r-card); padding: 30px; background: var(--c-white); border: 1px solid var(--c-line); display: grid; gap: 14px; align-content: start; }
 .belief h3 { font-size: var(--t-lg); font-weight: 700; letter-spacing: -0.025em; line-height: 1.1; }
